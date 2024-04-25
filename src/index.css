@@ -42,3 +42,18 @@ body {
   font-family: inter-thin;
   src: url("./assets/fonts/Inter-Thin.ttf");
 }
+
+.react-multi-carousel-list {
+  padding: 0rem 0 2rem 0;
+}
+
+.custom-dot-list-style button {
+  border: none !important;
+  background: #ccc;
+  padding: 5px !important;
+}
+.react-multi-carousel-dot.react-multi-carousel-dot--active button {
+  background: #7167ff !important;
+  width: 23px !important;
+  border-radius: 50px !important;
+}

@@ -18,8 +18,7 @@ const NavItems = () => {
   const links: { title: string; path: string; id: number }[] = [
     { id: 1, title: "Home", path: "/" },
     { id: 2, title: "Hotels", path: "/Hotels" },
-    { id: 2, title: "Flights", path: "/flights" },
-    { id: 3, title: "Tours", path: "/tours" },
+    { id: 3, title: "Flights", path: "/flights" },
     { id: 4, title: "Contact", path: "/contact" },
   ];
 
