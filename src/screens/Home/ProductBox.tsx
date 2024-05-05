@@ -133,7 +133,7 @@ function ProductBox() {
         {activeTab === 1 && <FlightSearch />}
         {activeTab === 2 && <HotelSearch />}
         <div className=" flex items-center justify-center font-interSemiBold text-white">
-          <button className="bg-[#7167FF] px-4 py-3 rounded-full  -mt-8 border-4 border-white shadow-md shadow-gray-200">
+          <button className="bg-[#7167FF] hover:bg-[#dc3546] transition-colors duration-200 px-4 py-3 rounded-full  -mt-8 border-4 border-white shadow-md shadow-gray-200">
             Search now
           </button>
         </div>
