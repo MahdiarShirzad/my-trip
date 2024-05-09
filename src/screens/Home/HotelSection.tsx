@@ -4,6 +4,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CustomRightArrow from "../../components/CustomRightArrow/CustomRightArrow.tsx";
 import CustomLeftArrow from "../../components/CustomLeftArrow/CustomLeftArrow.tsx";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store.ts";
 
 const responsive = {
   superLargeDesktop: {
@@ -25,8 +27,12 @@ const responsive = {
 };
 
 export default function HotelSection() {
+  const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
+
   return (
-    <div className="bg-slate-200 py-20 mt-10">
+    <div
+      className={`${darkTheme ? "bg-gray-700" : "bg-slate-200"} py-20 mt-10`}
+    >
       <div className=" container max-w-[1420px] mx-auto">
         <Title
           title="HOTEL"

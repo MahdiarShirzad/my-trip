@@ -1,10 +1,14 @@
 import { ReactElement, useState } from "react";
 import FlightSearch from "./FlightSearch";
 import HotelSearch from "./HotelSearch";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 function ProductBox() {
   const [darkButton, setDarkButton] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<number>(1);
+
+  const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
   const tabItems: {
     title: string;
@@ -17,7 +21,7 @@ function ProductBox() {
       title: "Flight",
       icon: (
         <svg
-          fill="#7167ff"
+          fill={darkTheme ? `#fff` : `#4f4b8b`}
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -61,7 +65,7 @@ function ProductBox() {
             {" "}
             <path
               d="M3 21H5M5 21H10M5 21V3M10 21H14M10 21V16L8 16C10 13.3333 14 13.3333 16 16L14 16V21M14 21H19M19 21H21M19 21V3M3 3H5M5 3H19M19 3H21M9 6.5H10M14 6.5H15M9 10.5H10M14 10.5H15"
-              stroke="#7167ff"
+              stroke={darkTheme ? `#fff` : `#4f4b8b`}
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -101,7 +105,11 @@ function ProductBox() {
     <div className="max-w-[1290px]  mx-auto -mt-10 ">
       <div className=" w-full z-[100] -pt-20 relative bg- rounded-3xl">
         <div className="relative bg-   h-full">
-          <div className="flex items-center justify-center gap-4  bg-white mx-20 rounded-full py-2 -mt-3 text-[#4f4b8b] font-interBold">
+          <div
+            className={`flex items-center justify-center gap-4  ${
+              darkTheme ? `bg-slate-700` : `bg-white`
+            }  mx-20 rounded-full py-2 -mt-3 text-[#504aa1] font-interBold`}
+          >
             {tabItems.map(
               (item: {
                 title: string;
@@ -110,9 +118,15 @@ function ProductBox() {
                 lightIcon: ReactElement;
               }) => (
                 <div
-                  className={`bg-[#7167FF26] px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer ${
-                    activeTab === item.id ? "bg-[#7167FF] text-white" : ""
-                  }`}
+                  className={` px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer ${
+                    activeTab === item.id && !darkTheme
+                      ? "bg-[#7167FF] text-white"
+                      : activeTab === item.id && darkTheme
+                      ? ` bg-slate-800 text-white`
+                      : ``
+                  }${darkTheme && `bg-slate-600 text-white`} ${
+                    !darkTheme && "bg-[#7167FF26]"
+                  }  ${activeTab === item.id ? "bg-[#7167FF] text-white" : ""}`}
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
                 >
@@ -133,7 +147,7 @@ function ProductBox() {
         {activeTab === 1 && <FlightSearch />}
         {activeTab === 2 && <HotelSearch />}
         <div className=" flex items-center justify-center font-interSemiBold text-white">
-          <button className="bg-[#7167FF] hover:bg-[#dc3546] transition-colors duration-200 px-4 py-3 rounded-full  -mt-8 border-4 border-white shadow-md shadow-gray-200">
+          <button className="bg-[#7167FF] hover:bg-[#dc3546] transition-colors duration-200 px-4 py-3 rounded-full  -mt-8 border-2 border-white shadow-gray-300 shadow-md ">
             Search now
           </button>
         </div>

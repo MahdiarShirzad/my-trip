@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 export default function FlightPassenger() {
   const [tabIsOpen, setTabIsOpen] = useState<boolean>(false);
@@ -8,6 +10,8 @@ export default function FlightPassenger() {
   const [adults, setAdults] = useState<number>(0);
   const [children, setChildren] = useState<number>(0);
   const [infants, setInfants] = useState<number>(0);
+
+  const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
   function tabHandler() {
     setTabIsOpen(!tabIsOpen);
@@ -35,12 +39,12 @@ export default function FlightPassenger() {
 
   return (
     <div className="mt-2 relative">
-      <div className="bg-[#7167FF26] font-inter text-[#4f4b8b] rounded-2xl px-4 py-5 w-72 h-full">
+      <div className="bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5 w-72 h-full">
         <div className=" flex items-center justify-between">
           <p className=" font-interSemiBold">Passenger, Class</p>
           <svg
             className=" w-[35px]"
-            fill="#4f4b8b"
+            fill={darkTheme ? `#fff` : `#4f4b8b`}
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +79,9 @@ export default function FlightPassenger() {
         </div>
       </div>
       <div
-        className={` absolute bg-white shadow-sm w-full mt-5 px-3 py-3 rounded-lg text-[#4f4b8b] ${
+        className={` absolute ${
+          darkTheme ? "bg-slate-600" : "bg-white"
+        } shadow-sm w-full mt-5 px-3 py-3 rounded-lg  ${
           !tabIsOpen && `hidden`
         } `}
       >

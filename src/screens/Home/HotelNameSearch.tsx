@@ -1,14 +1,20 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 export default function HotelNameSearch() {
   const [hotelName, setHotelName] = useState<string>("");
+
+  const darkTheme: boolean = useSelector(
+    (state: RootState) => state.theme.darkMode
+  );
 
   function handleHotelName(event: React.ChangeEvent<HTMLInputElement>) {
     setHotelName(event.target.value);
   }
 
   return (
-    <div className=" w-1/3 bg-[#7167FF26] font-inter text-[#4f4b8b] rounded-2xl px-4 py-5  h-full">
+    <div className=" w-1/3 bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5  h-full">
       <div className="flex justify-between items-center">
         <p className=" font-interSemiBold text-lg">Destination</p>
         <svg
@@ -46,7 +52,9 @@ export default function HotelNameSearch() {
         </svg>
       </div>
       <input
-        className=" font-interBold text-xl mt-3 block bg-transparent text-[#4F4B8B] focus:outline-none placeholder:text-[#4F4B8B] w-full focus:placeholder:opacity-0"
+        className={`font-interBold text-xl mt-3 block bg-transparent  focus:outline-none ${
+          darkTheme ? "placeholder:text-white" : "placeholder:text-[#4F4B8B]"
+        } w-full focus:placeholder:opacity-0`}
         placeholder={!hotelName ? "Hotel Name" : hotelName}
         value={hotelName}
         onChange={handleHotelName}

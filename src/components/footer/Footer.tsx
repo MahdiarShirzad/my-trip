@@ -1,8 +1,16 @@
+import { useSelector } from "react-redux";
 import logo from "../../assets/img/logo/logo-dark.png";
+import { RootState } from "../../features/store";
 
 function Footer() {
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
   return (
-    <div className=" bg-slate-200 font-inter text-gray-600">
+    <div
+      className={`${darkMode ? "bg-gray-700" : "bg-slate-200"} font-inter ${
+        darkMode ? "text-gray-300" : "text-gray-600"
+      }`}
+    >
       <div className=" container max-w-[1320px] mx-auto pt-20 flex items-start gap-4">
         <div className=" w-1/4">
           <img className=" w-56" src={logo} alt="logo" />
@@ -75,7 +83,11 @@ function Footer() {
                 </g>
               </svg>
             </div>
-            <p className=" text-gray-600 font-interSemiBold">
+            <p
+              className={`${
+                darkMode ? "text-gray-200" : "text-gray-600"
+              } font-interSemiBold`}
+            >
               Mazandaran ,Sari
             </p>
           </div>
@@ -104,13 +116,23 @@ function Footer() {
                 </g>
               </svg>
             </div>
-            <p className=" text-gray-600 font-interSemiBold">
+            <p
+              className={`${
+                darkMode ? "text-gray-200" : "text-gray-600"
+              } font-interSemiBold`}
+            >
               mahdiar55582@gmail.com
             </p>
           </div>
         </div>
         <div className=" w-1/6">
-          <p className=" font-interBold text-slate-600 text-2xl">Our Compony</p>
+          <p
+            className={`font-interBold ${
+              darkMode ? " text-slate-200" : "text-slate-600"
+            } text-2xl`}
+          >
+            Our Compony
+          </p>
           <div className=" border-b border-violet-600 border-2 mt-3 rounded-full w-1/3"></div>
           <div className=" flex flex-col mt-8 gap-4">
             <div className=" flex items-center gap-2">
@@ -256,7 +278,11 @@ function Footer() {
           </div>
         </div>
         <div className=" w-1/6">
-          <p className=" font-interBold text-slate-600 text-2xl">
+          <p
+            className={`font-interBold ${
+              darkMode ? " text-slate-200" : "text-slate-600"
+            } text-2xl`}
+          >
             Other Services
           </p>
           <div className=" border-b border-violet-600 border-2 mt-3 rounded-full w-1/3"></div>{" "}
@@ -404,7 +430,13 @@ function Footer() {
           </div>
         </div>
         <div className=" w-1/6">
-          <p className=" font-interBold text-slate-600 text-2xl">Help Center</p>
+          <p
+            className={`font-interBold ${
+              darkMode ? " text-slate-200" : "text-slate-600"
+            } text-2xl`}
+          >
+            Help Center
+          </p>
           <div className=" border-b border-violet-600 border-2 mt-3 rounded-full w-1/3"></div>
           <div className=" flex flex-col mt-8 gap-4">
             <div className=" flex items-center gap-2">
@@ -550,7 +582,13 @@ function Footer() {
           </div>
         </div>
         <div className=" w-1/5">
-          <p className=" font-interBold text-slate-600 text-2xl">Newsletter</p>
+          <p
+            className={`font-interBold ${
+              darkMode ? " text-slate-200" : "text-slate-600"
+            } text-2xl`}
+          >
+            Newsletter
+          </p>
           <div className=" border-b border-violet-600 border-2 mt-3 rounded-full w-1/3"></div>
           <div className=" flex flex-col mt-8 gap-4">
             <p>Subscribe Our Newsletter To Get Latest Update And News</p>
@@ -608,7 +646,7 @@ function Footer() {
           </button>
         </div>
       </div>
-      <div className=" border py-4 border-zinc-300 mt-6">
+      <div className=" border-t py-4 border-zinc-300 mt-6">
         <div className="container max-w-[1320px] mx-auto font-inter ">
           © Copyright 2024{" "}
           <span className=" text-violet-600 font-interSemiBold">MyTrip</span>{" "}

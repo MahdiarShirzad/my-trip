@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #f5f7fc;
-}
-
 @font-face {
   font-family: inter;
   src: url("./assets/fonts/Inter-Regular.ttf");

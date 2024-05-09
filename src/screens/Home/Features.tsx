@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
+
 export default function Features() {
+  const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
+
   return (
     <div className=" flex items-center justify-between gap-12 container max-w-[1320px] mx-auto mt-16">
       <div className=" w-1/3">
@@ -115,10 +120,18 @@ export default function Features() {
             </svg>
           </div>
         </div>
-        <p className=" text-center font-interBold text-zinc-900 text-xl mt-4">
+        <p
+          className={` text-center font-interBold ${
+            darkTheme ? "text-slate-200" : `text-zinc-900`
+          } text-xl mt-4`}
+        >
           Worldwide Coverage
         </p>
-        <p className=" text-center mt-2 font-inter text-gray-700">
+        <p
+          className={`text-center mt-2 font-inter ${
+            darkTheme ? "text-slate-400" : "text-gray-700"
+          }`}
+        >
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </p>
@@ -148,10 +161,18 @@ export default function Features() {
             </svg>
           </div>
         </div>
-        <p className=" text-center font-interBold text-zinc-900 text-xl mt-4">
+        <p
+          className={` text-center font-interBold ${
+            darkTheme ? "text-slate-200" : `text-zinc-900`
+          } text-xl mt-4`}
+        >
           Best Quality Services
         </p>
-        <p className=" text-center mt-2 font-inter text-gray-700">
+        <p
+          className={`text-center mt-2 font-inter ${
+            darkTheme ? "text-slate-400" : "text-gray-700"
+          }`}
+        >
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </p>
@@ -200,10 +221,18 @@ export default function Features() {
             </svg>
           </div>
         </div>
-        <p className=" text-center font-interBold text-zinc-900 text-xl mt-4">
+        <p
+          className={` text-center font-interBold ${
+            darkTheme ? "text-slate-200" : `text-zinc-900`
+          } text-xl mt-4`}
+        >
           24/7 Customer Service
         </p>
-        <p className=" text-center mt-2 font-inter text-gray-700">
+        <p
+          className={`text-center mt-2 font-inter ${
+            darkTheme ? "text-slate-400" : "text-gray-700"
+          }`}
+        >
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </p>

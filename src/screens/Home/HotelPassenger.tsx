@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 export default function HotelPassenger() {
   const [tabIsOpen, setTabIsOpen] = useState<boolean>(false);
@@ -9,6 +11,10 @@ export default function HotelPassenger() {
   const [children, setChildren] = useState<number>(0);
   const [infants, setInfants] = useState<number>(0);
   const [roomNumber, setRoomNumber] = useState<number>(1);
+
+  const darkMode: boolean = useSelector(
+    (state: RootState) => state.theme.darkMode
+  );
 
   function tabHandler() {
     setTabIsOpen(!tabIsOpen);
@@ -31,21 +37,21 @@ export default function HotelPassenger() {
   }
 
   function handleRoomChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setRoomType(event.target.value);
+    setRoomType(event.target.title);
   }
 
   function handleRoomNumber(category: string, value: number) {
     switch (category) {
       case "-":
-        setRoomNumber(Math.max(roomNumber - value, 0));
+        setRoomNumber(Math.max(roomNumber - value, 1));
         break;
       case "+":
-        setRoomNumber(Math.max(roomNumber + value, 0));
+        setRoomNumber(Math.max(roomNumber + value, 1));
     }
   }
 
   return (
-    <div className=" w-1/3 bg-[#7167FF26] font-inter text-[#4f4b8b] rounded-2xl px-4 py-5  h-full relative  ">
+    <div className=" w-1/3 bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5  h-full relative  ">
       <div className="flex justify-between items-start w-full">
         <div
           onClick={tabHandler}
@@ -54,7 +60,7 @@ export default function HotelPassenger() {
           <p className=" text-lg font-interSemiBold">Rooms, Guests</p>
           <p className=" text-2xl font-interBold">
             {roomNumber} Rooms, {adults + children + infants} Guest
-            {adults + children + infants !== 0 ? "s" : ""}
+            {adults + children + infants > 1 ? "s" : ""}
           </p>
           <p className=" text- font-inter">{roomType}</p>
         </div>
@@ -103,7 +109,9 @@ export default function HotelPassenger() {
         </svg>
       </div>
       <div
-        className={` absolute bg-white shadow-sm w-full mt-5 px-3 py-3 rounded-lg text-[#4f4b8b] ${
+        className={` absolute ${
+          darkMode ? "bg-slate-600" : "bg-white"
+        } shadow-sm w-full mt-5 px-3 py-3 rounded-lg  ${
           !tabIsOpen && `hidden`
         } `}
       >
@@ -382,8 +390,9 @@ export default function HotelPassenger() {
                 name="class"
                 id="firstClass"
                 value="First Class"
-                checked={roomType === " Single Room"}
+                checked={roomType === "Single Room"}
                 onChange={handleRoomChange}
+                title="Single Room"
               />
               <label className=" cursor-pointer" htmlFor="firstClass">
                 Single Room
@@ -398,6 +407,7 @@ export default function HotelPassenger() {
                 value="Business"
                 checked={roomType === "Double Room"}
                 onChange={handleRoomChange}
+                title="Double Room"
               />
               <label className=" cursor-pointer" htmlFor="business">
                 Double Room
@@ -412,6 +422,7 @@ export default function HotelPassenger() {
                 value="Economy"
                 checked={roomType === "Deluxe Room"}
                 onChange={handleRoomChange}
+                title="Deluxe Room"
               />
               <label className=" cursor-pointer" htmlFor="economy">
                 Deluxe Room
