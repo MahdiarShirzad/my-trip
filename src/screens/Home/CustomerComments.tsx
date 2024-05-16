@@ -8,26 +8,30 @@ import CustomerCommentsCard from "../../components/CustomerCommentsCard/Customer
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
-    items: 3,
+    items: 5,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 3000, min: 1325 },
     items: 2,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 600 },
+    breakpoint: { max: 1324, min: 1125 },
     items: 2,
   },
+  littleTablet: {
+    breakpoint: { max: 1124, min: 700 },
+    items: 1,
+  },
   mobile: {
-    breakpoint: { max: 600, min: 0 },
+    breakpoint: { max: 699, min: 0 },
     items: 1,
   },
 };
 
 export default function CustomerComments() {
   return (
-    <div className=" container max-w-[1320px] mx-auto flex py-20">
-      <div className=" w-2/5">
+    <div className=" container max-w-[1320px] mx-auto flex max-xl:flex-col py-20 max-xl:gap-20">
+      <div className=" w-2/5 max-xl:w-3/5 mx-auto">
         <Title
           title="TESTIMONIALS"
           desc="What Our Customers Are Saying Us?"
@@ -63,8 +67,7 @@ export default function CustomerComments() {
           </svg>
         </button>
       </div>
-      <div className="w-3/5">
-        {" "}
+      <div className="w-3/5 max-lg:w-3/5 mx-auto">
         <Carousel
           responsive={responsive}
           autoPlay={true}

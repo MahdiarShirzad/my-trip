@@ -1,10 +1,31 @@
 import NavItems from "./NavItems";
 import styles from "./Header.module.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
+import { useEffect, useState } from "react";
 
 const MobileNav = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const scrollThreshold = 5;
+      setIsScrolled(scrollPosition > scrollThreshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div
-      className={`${styles.navMobile} flex items-center justify-between text-[14px] lg:hidden   text-[#323E73]`}
+      className={`${styles.navMobile}  flex items-center justify-between text-[14px] lg:hidden   text-[#323E73]`}
     >
       <input
         className={`${styles.toggleNav} hidden`}
@@ -32,7 +53,7 @@ const MobileNav = () => {
             {" "}
             <path
               d="M4 17H20M4 12H20M4 7H20"
-              stroke="#000000"
+              stroke={darkTheme || !isScrolled ? "#fff" : "#000000"}
               stroke-width="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -40,7 +61,11 @@ const MobileNav = () => {
           </g>
         </svg>
       </label>
-      <ul className={` ${styles.listNavMobile} text-black `}>
+      <ul
+        className={` ${styles.listNavMobile} ${
+          !darkTheme ? "text-black" : "text-white"
+        } ${darkTheme ? "bg-slate-950" : "bg-white"}`}
+      >
         <NavItems />
       </ul>
     </div>

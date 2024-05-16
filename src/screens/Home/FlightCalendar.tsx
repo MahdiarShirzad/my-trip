@@ -40,8 +40,8 @@ export default function FlightCalendar({ type }: { type: string }) {
   const returnDayIndex = returnDate.getDay();
 
   return (
-    <div className="mt-2 ">
-      <div className="bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5 h-full w-72">
+    <div className="mt-2">
+      <div className="bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5 h-full max-lg:w-full w-72">
         <div className=" flex items-center justify-between ">
           <p className=" font-interSemiBold">Journey Date</p>
           {type === "Round Way" && (

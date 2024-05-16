@@ -32,7 +32,7 @@ export default function HotelCalendar() {
   const returnDayIndex = returnDate.getDay();
 
   return (
-    <div className=" w-1/3 bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5  h-full">
+    <div className=" w-1/3 max-lg:w-full bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5  h-full">
       <div className="flex justify-between items-start">
         <div>
           <p className=" text-lg font-interSemiBold">Check In</p>

@@ -42,6 +42,14 @@
 .react-multi-carousel-list {
   padding: 0rem 0 2rem 0;
 }
+@media screen and (max-width: 699) {
+  .react-multi-carousel-list {
+    /* display: flex;
+    justify-content: start !important;
+    gap: 0 !important; */
+    padding-inline: 120px !important;
+  }
+}
 
 .custom-dot-list-style button {
   border: none !important;
@@ -53,6 +61,7 @@
   width: 23px !important;
   border-radius: 50px !important;
 }
+
 .react-datepicker__input-container {
   width: 100%;
 }
@@ -104,4 +113,15 @@
 }
 .react-datepicker__day--selected {
   background-color: #7167ff !important;
+}
+#range-slider-yellow .range-slider__thumb {
+  background: #faa307;
+  transition: transform 0.3s;
+}
+#range-slider-yellow .range-slider__range {
+  background: #ffbf00;
+  transition: height 0.3s;
+}
+.contact-hero {
+  background-size: 100% 90vh !important;
 }

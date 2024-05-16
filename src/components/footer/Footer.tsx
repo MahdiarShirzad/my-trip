@@ -11,8 +11,8 @@ function Footer() {
         darkMode ? "text-gray-300" : "text-gray-600"
       }`}
     >
-      <div className=" container max-w-[1320px] mx-auto pt-20 flex items-start gap-4">
-        <div className=" w-1/4">
+      <div className=" container max-w-[1320px] mx-auto pt-20 flex items-start gap-4 max-lg:flex-col max-lg:px-20 max-lg:gap-10">
+        <div className=" w-1/4 max-lg:w-1/3">
           <img className=" w-56" src={logo} alt="logo" />
           <p className=" mt-8">
             We are many variations of passages available but the majority have
@@ -125,7 +125,7 @@ function Footer() {
             </p>
           </div>
         </div>
-        <div className=" w-1/6">
+        <div className=" w-1/6 max-lg:w-1/3">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"
@@ -277,7 +277,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className=" w-1/6">
+        <div className=" w-1/6 max-lg:w-1/3">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"
@@ -429,7 +429,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className=" w-1/6">
+        <div className=" w-1/6 max-lg:w-1/3">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"
@@ -581,7 +581,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className=" w-1/5">
+        <div className=" w-1/5 max-lg:w-1/2">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"
@@ -646,7 +646,7 @@ function Footer() {
           </button>
         </div>
       </div>
-      <div className=" border-t py-4 border-zinc-300 mt-6">
+      <div className=" border-t py-4 border-zinc-300 mt-6 ">
         <div className="container max-w-[1320px] mx-auto font-inter ">
           © Copyright 2024{" "}
           <span className=" text-violet-600 font-interSemiBold">MyTrip</span>{" "}

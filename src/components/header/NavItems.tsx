@@ -1,19 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 const activeClass = (isActive: boolean) =>
   isActive
     ? "pb-2 border-b-2 border-[#1A064F] transition-none"
     : "transition-none pb-2";
 
-const NavItems = () => {
+const NavItems: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
+
+  const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
   const links: { title: string; path: string; id: number }[] = [
     { id: 1, title: "Home", path: "/" },
@@ -23,12 +27,12 @@ const NavItems = () => {
   ];
 
   return (
-    <div className=" max-lg:pt-10 lg:hid">
+    <div className={`max-lg:pt-10 lg:hid `}>
       <div className=" absolute top-8 right-7 lg:hidden">
         <label htmlFor="toggle_nav" className={` cursor-pointer lg:hidden `}>
           <svg
             className=" w-[17px]"
-            fill="#000000"
+            fill={darkTheme ? "#fff" : "#000"}
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"

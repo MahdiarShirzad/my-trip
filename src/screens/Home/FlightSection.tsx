@@ -9,7 +9,7 @@ export default function FlightSection() {
         desc="Our Most Popular Flights"
         isCommentTitle={false}
       />
-      <div className=" flex gap-8 items-center justify-start pt-7 flex-wrap">
+      <div className=" flex gap-8 items-center justify-start pt-7 flex-wrap max-lg:justify-center max-lg:px-10">
         <FlightCard />
         <FlightCard />
         <FlightCard />

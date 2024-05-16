@@ -5,8 +5,8 @@ export default function Features() {
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
   return (
-    <div className=" flex items-center justify-between gap-12 container max-w-[1320px] mx-auto mt-16">
-      <div className=" w-1/3">
+    <div className=" flex max-lg:flex-col items-center justify-between gap-12 container max-w-[1320px] mx-auto mt-16">
+      <div className=" w-1/3 max-lg:w-full max-lg:px-28">
         <div className=" border-dashed border-2 p-1 w-20 h-20 border-[#7167FF] rounded-full mx-auto">
           <div className=" bg-[#7167FF] rounded-full p-4 ">
             <svg
@@ -136,7 +136,7 @@ export default function Features() {
           readable content of a page when looking at its layout.
         </p>
       </div>
-      <div className=" w-1/3">
+      <div className=" w-1/3  max-lg:w-full max-lg:px-28">
         <div className=" border-dashed border-2 p-1 w-20 h-20 border-[#7167FF] rounded-full mx-auto">
           <div className=" bg-[#7167FF] rounded-full p-3 ">
             <svg
@@ -177,7 +177,7 @@ export default function Features() {
           readable content of a page when looking at its layout.
         </p>
       </div>
-      <div className=" w-1/3">
+      <div className=" w-1/3  max-lg:w-full max-lg:px-28">
         <div className=" border-dashed border-2 p-1 w-20 h-20 border-[#7167FF] rounded-full mx-auto">
           <div className=" bg-[#7167FF] rounded-full p-3 ">
             <svg

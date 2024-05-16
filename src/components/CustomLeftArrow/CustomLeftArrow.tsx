@@ -5,7 +5,7 @@ const CustomRightArrow: React.FC<ArrowProps> = ({ onClick }) => {
   // Use the ArrowProps type to define the props
   return (
     <button
-      className=" p-3  z-30  absolute left-0 rounded-full bg-white shadow-md"
+      className=" p-3  z-30  absolute left- rounded-full bg-white shadow-md"
       onClick={onClick}
     >
       {/* You can customize the arrow icon here */}

@@ -16,7 +16,7 @@ function FlightSearch() {
 
   return (
     <div
-      className={`px-10  -mt-7 ${
+      className={`px-10  -mt-7 max-lg:mx-20 max-lg:h-[630px] ${
         darkTheme ? `bg-slate-700` : `bg-white`
       } rounded-3xl h-72 py-10 ${darkTheme ? `text-white` : `text-[#4f4b8b]`}`}
     >
@@ -51,7 +51,7 @@ function FlightSearch() {
         </div>
       </form>
       <div
-        className={` flex justify-between items-stretch gap-6 ${
+        className={` flex max-lg:flex-col  justify-between items-stretch gap-6  ${
           darkTheme ? `text-white` : `text-[#4f4b8b]`
         } `}
       >

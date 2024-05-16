@@ -7,7 +7,7 @@ export default function HotelCard() {
 
   return (
     <div
-      className={` w-[305px] relative py-3 px-4 ml-4  ${
+      className={` w-[305px] relative py-3 px-4  my-2 ${
         darkTheme ? "bg-slate-600" : `bg-white`
       } rounded-xl  ${darkTheme ? "text-white" : "text-[#4f4b8b]"}`}
     >

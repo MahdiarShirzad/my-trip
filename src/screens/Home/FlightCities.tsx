@@ -25,7 +25,7 @@ export default function FlightCities() {
     SetDestinationCity(event.target.value);
   };
   return (
-    <div className=" flex mt-2  items-center  relative   w-1/2">
+    <div className=" flex mt-2  items-center  relative  max-lg:w-full w-1/2">
       <div className="bg-[#7167FF26] font-inter  rounded-2xl px-4 py-5 w-80 h-40">
         <div className=" flex items-center justify-between">
           <p className=" font-interSemiBold">From</p>
