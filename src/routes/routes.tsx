@@ -3,6 +3,7 @@ import Home from "../screens/Home/Home.tsx";
 import Hotel from "../screens/Hotels/Hotel.tsx";
 import Flight from "../screens/Flight/Flight.tsx";
 import Contact from "../screens/Contact/Contact.tsx";
+import Login from "../screens/Auth/Login.tsx";
 
 const routes: RouteObject[] = [
   {
@@ -21,6 +22,10 @@ const routes: RouteObject[] = [
   {
     path: "/contact",
     element: <Contact />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ];
 
