@@ -2,10 +2,14 @@ import React from "react";
 import Layout from "../../components/common/layout/Layout";
 import logo from "../../assets/img/logo/logo-dark.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 type Props = {};
 
 export default function Login({}: Props) {
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
   return (
     <Layout>
       <div className=" relative w-full h-[500x] max-lg:hidden">
@@ -20,14 +24,24 @@ export default function Login({}: Props) {
         </div>
       </div>
       <div className=" max-w-[1320px] mx-auto my-20 max-lg:py-20">
-        <div className="max-w-[610px] bg-white mx-auto py-5 rounded-xl">
+        <div
+          className={`max-w-[610px] ${
+            darkMode ? "bg-slate-500" : "bg-white"
+          } mx-auto py-5 rounded-xl`}
+        >
           <img className=" w-[240px] mx-auto" src={logo} alt="" />
-          <p className=" text-center mt-3 text-xl font-inter text-gray-600">
+          <p
+            className={`text-center mt-3 text-xl font-inter ${
+              darkMode ? "text-gray-200" : "text-gray-600"
+            }`}
+          >
             Login with your MyTrip account
           </p>
           <form className=" px-20 mt-8" action="">
             <label
-              className=" text-lg text-slate-600 font-inter"
+              className={`text-lg ${
+                darkMode ? "text-slate-800" : "text-slate-600"
+              } font-inter`}
               htmlFor="email"
             >
               Email Address
@@ -56,7 +70,9 @@ export default function Login({}: Props) {
                 </g>
               </svg>
               <input
-                className=" block w-full  px-1 focus:outline-none font-inter text-slate-800"
+                className={`block w-full  px-1 focus:outline-none font-inter ${
+                  darkMode ? "text-gray-200" : "text-slate-800"
+                } bg-transparent`}
                 type="email"
                 title="email"
                 id="email"
@@ -64,7 +80,9 @@ export default function Login({}: Props) {
               />
             </div>
             <label
-              className=" text-lg text-slate-600 font-inter mt-7 block"
+              className={`text-lg ${
+                darkMode ? "text-slate-800" : "text-slate-600"
+              } font-inter`}
               htmlFor="email"
             >
               Password
@@ -94,7 +112,9 @@ export default function Login({}: Props) {
                 </g>
               </svg>
               <input
-                className=" block w-full  px-1 focus:outline-none font-inter text-slate-800"
+                className={`block w-full  px-1 focus:outline-none font-inter ${
+                  darkMode ? "text-gray-200" : "text-slate-800"
+                } bg-transparent`}
                 type="password"
                 title="Password"
                 id="Password"
@@ -111,13 +131,18 @@ export default function Login({}: Props) {
                   title="remember"
                 />
                 <label
-                  className=" block cursor-pointer text-gray-600"
+                  className={`block cursor-pointer ${
+                    darkMode ? "text-gray-200" : "text-gray-600"
+                  }`}
                   htmlFor="remember"
                 >
                   Remember Me
                 </label>
               </div>
-              <Link className="text-violet-500" to="/forgetpass">
+              <Link
+                className={darkMode ? "text-violet-300" : "text-violet-500"}
+                to="/forgetpass"
+              >
                 Forgot Password?
               </Link>
             </div>
