@@ -102,7 +102,7 @@ export default function FlightPassenger() {
       </div>
       {tabIsOpen && (
         <div
-          className={` absolute ${
+          className={` absolute z-30 ${
             darkTheme ? "bg-slate-600" : "bg-white"
           } shadow-sm w-full mt-5 px-3 py-3 rounded-lg   `}
         >

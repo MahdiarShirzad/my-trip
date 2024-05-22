@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../../features/store";
 import img from "../../../assets/img/hotel/01.jpg";
+import { Link } from "react-router-dom";
 
 export default function HotelCard() {
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
@@ -85,7 +86,10 @@ export default function HotelCard() {
           </p>
           <p>/Per Night</p>
         </div>
-        <button className=" flex items-center gap-1 font-interSemiBold">
+        <Link
+          to="/hotel-booking"
+          className=" flex items-center gap-1 font-interSemiBold"
+        >
           <p>See Details</p>
           <svg
             className=" w-[13px] mt-1"
@@ -112,7 +116,7 @@ export default function HotelCard() {
               </g>{" "}
             </g>
           </svg>
-        </button>
+        </Link>
       </div>
       <button className="absolute top-4 left-6 bg-[#7167FF] p-1  rounded-full">
         {""}

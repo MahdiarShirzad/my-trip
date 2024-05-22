@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../components/common/layout/Layout";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
+import Map from "./Map";
 
 type Props = {};
 
@@ -236,6 +237,7 @@ export default function Contact({}: Props) {
           </form>
         </div>
       </div>
+      <Map />
     </Layout>
   );
 }

@@ -5,6 +5,8 @@ import Flight from "../screens/Flight/Flight.tsx";
 import Contact from "../screens/Contact/Contact.tsx";
 import Login from "../screens/Auth/Login.tsx";
 import SignUp from "../screens/Auth/SignUp.tsx";
+import HotelBooking from "../screens/HotelBooking/HotelBooking.tsx";
+import FlightBooking from "../screens/FlightBooking/FlightBooking.tsx";
 
 const routes: RouteObject[] = [
   {
@@ -17,8 +19,16 @@ const routes: RouteObject[] = [
     element: <Hotel />,
   },
   {
+    path: "/hotel-booking",
+    element: <HotelBooking />,
+  },
+  {
     path: "/flights",
     element: <Flight />,
+  },
+  {
+    path: "/flight-booking",
+    element: <FlightBooking />,
   },
   {
     path: "/contact",

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import img from "../../../assets/img/flight/01.jpg";
 import { RootState } from "../../../features/store";
+import { Link } from "react-router-dom";
 
 export default function FlightCard() {
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
@@ -78,7 +79,10 @@ export default function FlightCard() {
             <p>560</p>
           </p>
         </div>
-        <button className=" flex items-center gap-1 font-interSemiBold">
+        <Link
+          to="/flight-booking"
+          className=" flex items-center gap-1 font-interSemiBold"
+        >
           <p>See Details</p>
           <svg
             className=" w-[13px] mt-1"
@@ -105,7 +109,7 @@ export default function FlightCard() {
               </g>{" "}
             </g>
           </svg>
-        </button>
+        </Link>
       </div>
       <button className="absolute top-4 left-6 bg-[#7167FF] p-1  rounded-full">
         {""}
