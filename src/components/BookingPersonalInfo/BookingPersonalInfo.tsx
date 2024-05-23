@@ -8,15 +8,23 @@ export default function BookingPersonalInfo({}: Props) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   return (
-    <div className="w-3/5 bg-white px-10 py-6 rounded-xl">
-      <p className=" text-2xl my-4 text-slate-600 font-interBold">
+    <div
+      className={`w-3/5  px-10 py-6 rounded-xl ${
+        darkMode ? "bg-slate-600" : "bg-white"
+      }`}
+    >
+      <p
+        className={`text-2xl my-4 ${
+          darkMode ? "text-gray-200" : "text-slate-600"
+        } font-interBold`}
+      >
         Booking Personal Info
       </p>
       <form className=" flex justify-between flex-wrap" action="">
         <div className=" w-[48%]">
           <label
             className={`text-lg ${
-              darkMode ? "text-slate-800" : "text-slate-600"
+              darkMode ? "text-gray-200" : "text-slate-800"
             } font-inter`}
             htmlFor="fname"
           >
@@ -67,7 +75,7 @@ export default function BookingPersonalInfo({}: Props) {
         <div className=" w-[48%]">
           <label
             className={`text-lg ${
-              darkMode ? "text-slate-800" : "text-slate-600"
+              darkMode ? "text-gray-200" : "text-slate-600"
             } font-inter`}
             htmlFor="lname"
           >
@@ -110,7 +118,7 @@ export default function BookingPersonalInfo({}: Props) {
         <div className="w-[48%] mt-5">
           <label
             className={`text-lg ${
-              darkMode ? "text-slate-800" : "text-slate-600"
+              darkMode ? "text-gray-200" : "text-slate-600"
             } font-inter`}
             htmlFor="email"
           >
@@ -153,7 +161,7 @@ export default function BookingPersonalInfo({}: Props) {
         <div className="w-[48%] mt-5">
           <label
             className={`text-lg ${
-              darkMode ? "text-slate-800" : "text-slate-600"
+              darkMode ? "text-gray-200" : "text-slate-600"
             } font-inter`}
             htmlFor="phone"
           >
@@ -197,7 +205,7 @@ export default function BookingPersonalInfo({}: Props) {
         <div className="w-[48%] mt-5">
           <label
             className={`text-lg ${
-              darkMode ? "text-slate-800" : "text-slate-600"
+              darkMode ? "text-gray-200" : "text-slate-600"
             } font-inter`}
             htmlFor="Country"
           >
@@ -239,7 +247,7 @@ export default function BookingPersonalInfo({}: Props) {
         <div className="w-[48%] mt-5">
           <label
             className={`text-lg ${
-              darkMode ? "text-slate-800" : "text-slate-600"
+              darkMode ? "text-gray-200" : "text-slate-600"
             } font-inter`}
             htmlFor="city"
           >
@@ -276,7 +284,7 @@ export default function BookingPersonalInfo({}: Props) {
         <div className="w-full mt-5">
           <label
             className={`text-lg ${
-              darkMode ? "text-slate-800" : "text-slate-600"
+              darkMode ? "text-gray-200" : "text-slate-600"
             } font-inter`}
             htmlFor="address"
           >

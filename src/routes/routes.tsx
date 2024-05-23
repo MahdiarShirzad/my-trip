@@ -13,6 +13,7 @@ import UserBookings from "../screens/UserPanel/UserBookings.tsx";
 import UserWishList from "../screens/UserPanel/UserWishList.tsx";
 import UserSettings from "../screens/UserPanel/UserSettings.tsx";
 import UserMessages from "../screens/UserPanel/UserMessages.tsx";
+import ForgetPass from "../screens/Auth/ForgetPass.tsx";
 
 const routes: RouteObject[] = [
   {
@@ -47,6 +48,10 @@ const routes: RouteObject[] = [
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/forgotpass",
+    element: <ForgetPass />,
   },
   {
     path: "user-panel",

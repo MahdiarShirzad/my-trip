@@ -14,6 +14,7 @@ type Link = {
 
 export default function UserBtn({}: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [rotate, setRotate] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
@@ -25,7 +26,7 @@ export default function UserBtn({}: Props) {
       path: "/user-panel/profile",
       icon: (
         <svg
-          className=" w-4"
+          className=" w-5"
           viewBox="0 0 20 20"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +69,7 @@ export default function UserBtn({}: Props) {
       path: "/user-panel/bookings",
       icon: (
         <svg
-          className="w-5"
+          className="w-6"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +104,7 @@ export default function UserBtn({}: Props) {
       path: "/user-panel/settings",
       icon: (
         <svg
-          className=" w-4"
+          className=" w-5"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +139,7 @@ export default function UserBtn({}: Props) {
     },
   ];
 
-  const handleSelect = (option: string) => {
+  const handleSelect = () => {
     setIsOpen(false);
   };
 
@@ -159,6 +160,10 @@ export default function UserBtn({}: Props) {
     };
   }, []);
 
+  const handleRotate = () => {
+    setRotate(rotate === 0 ? 180 : 0); // Toggle between 0 and 180 degrees
+  };
+
   return (
     <div
       className={`${
@@ -169,8 +174,11 @@ export default function UserBtn({}: Props) {
       <button
         className={`${
           darkMode ? "text-gray-200" : ""
-        }  w-full h-full   flex items-center gap-2 font-interSemiBold text-lg cursor-pointer  text-black`}
-        onClick={() => setIsOpen(!isOpen)}
+        }  w-full h-full   flex items-center gap-2 font-interSemiBold text-lg cursor-pointer  text-black `}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          handleRotate();
+        }}
       >
         <svg
           className=" w-10 max-md:w-8"
@@ -210,10 +218,11 @@ export default function UserBtn({}: Props) {
         mahdiar
         <div className="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2 text-gray-700">
           <svg
-            className="fill-current h-4 w-4 "
+            className="fill-current h-4 w-4 duration-300"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             stroke={darkMode ? "#eee" : "#000"}
+            style={{ transform: `rotate(${rotate}deg)`, width: "17px" }}
           >
             <path
               fill={darkMode ? "#eee" : "#000"}
@@ -229,7 +238,14 @@ export default function UserBtn({}: Props) {
           } rounded-lg z-10`}
         >
           {userLinks.map((link) => (
-            <NavLink key={link.id} to={link.path}>
+            <NavLink
+              onClick={handleSelect}
+              className={`flex items-center gap-2 px-4 py-2 my-2 mx-2 rounded-lg  font-interSemiBold ${
+                darkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"
+              }`}
+              key={link.id}
+              to={link.path}
+            >
               {link.icon}
               {link.label}
             </NavLink>

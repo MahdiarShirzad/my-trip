@@ -6,7 +6,7 @@ import { RootState } from "../../features/store";
 
 type Props = {};
 
-export default function Login({}: Props) {
+export default function ForgetPass({}: Props) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   return (
@@ -17,7 +17,7 @@ export default function Login({}: Props) {
         <div className=" absolute h-[500px] w-full top-0 flex items-center justify-center z-10 bg-transparent">
           <div className=" container max-w-[1320px] mx-auto">
             <p className=" text-center w-full font-interExtraBold text-4xl text-white">
-              Login
+              Forgot Password
             </p>
           </div>
         </div>
@@ -78,17 +78,9 @@ export default function Login({}: Props) {
                 placeholder="Your Email"
               />
             </div>
-            <label
-              className={`text-lg ${
-                darkMode ? "text-slate-800" : "text-slate-600"
-              } font-inter`}
-              htmlFor="email"
-            >
-              Password
-            </label>
-            <div className=" flex items-center gap-3 border-2 rounded-lg px-4 py-3 mt-2 mx-1">
+            <button className=" flex items-center justify-center gap-1 bg-violet-500 text-white w-full mt-5 py-2 rounded-xl font-interSemiBold">
               <svg
-                className=" w-[24px]"
+                className=" w-5"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,72 +94,20 @@ export default function Login({}: Props) {
                 <g id="SVGRepo_iconCarrier">
                   {" "}
                   <path
-                    d="M12 14.5V16.5M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"
-                    stroke="#aaa"
-                    stroke-width="2"
+                    d="M21.0667 5C21.6586 5.95805 22 7.08604 22 8.29344C22 11.7692 19.1708 14.5869 15.6807 14.5869C15.0439 14.5869 13.5939 14.4405 12.8885 13.8551L12.0067 14.7333C11.272 15.465 11.8598 15.465 12.1537 16.0505C12.1537 16.0505 12.8885 17.075 12.1537 18.0995C11.7128 18.6849 10.4783 19.5045 9.06754 18.0995L8.77362 18.3922C8.77362 18.3922 9.65538 19.4167 8.92058 20.4412C8.4797 21.0267 7.30403 21.6121 6.27531 20.5876C6.22633 20.6364 5.952 20.9096 5.2466 21.6121C4.54119 22.3146 3.67905 21.9048 3.33616 21.6121L2.45441 20.7339C1.63143 19.9143 2.1115 19.0264 2.45441 18.6849L10.0963 11.0743C10.0963 11.0743 9.3615 9.90338 9.3615 8.29344C9.3615 4.81767 12.1907 2 15.6807 2C16.4995 2 17.282 2.15509 18 2.43738"
+                    stroke="#fff"
+                    stroke-width="1.5"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   ></path>{" "}
-                </g>
-              </svg>
-              <input
-                className={`block w-full  px-1 focus:outline-none font-inter ${
-                  darkMode ? "text-gray-200" : "text-slate-800"
-                } bg-transparent`}
-                type="password"
-                title="Password"
-                id="Password"
-                placeholder="Your Password"
-              />
-            </div>
-            <div className="flex items-center justify-between font-inter mt-4">
-              <div className=" flex items-center gap-1 justify-between ">
-                <input
-                  className=" block text-lg w-4 h-4 cursor-pointer checked:accent-violet-500 bg-transparent"
-                  type="checkbox"
-                  name="remember"
-                  id="remember"
-                  title="remember"
-                />
-                <label
-                  className={`block cursor-pointer ${
-                    darkMode ? "text-gray-200" : "text-gray-600"
-                  }`}
-                  htmlFor="remember"
-                >
-                  Remember Me
-                </label>
-              </div>
-              <Link
-                className={darkMode ? "text-violet-300" : "text-violet-500"}
-                to="/forgotpass"
-              >
-                Forgot Password?
-              </Link>
-            </div>
-            <button className=" flex items-center justify-center gap-1 bg-violet-500 text-white w-full mt-5 py-2 rounded-xl font-interSemiBold">
-              <svg
-                className=" w-[20px]"
-                viewBox="0 0 15 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M4.5 1C4.22386 1 4 1.22386 4 1.5C4 1.77614 4.22386 2 4.5 2H12V13H4.5C4.22386 13 4 13.2239 4 13.5C4 13.7761 4.22386 14 4.5 14H12C12.5523 14 13 13.5523 13 13V2C13 1.44772 12.5523 1 12 1H4.5ZM6.60355 4.89645C6.40829 4.70118 6.09171 4.70118 5.89645 4.89645C5.70118 5.09171 5.70118 5.40829 5.89645 5.60355L7.29289 7H0.5C0.223858 7 0 7.22386 0 7.5C0 7.77614 0.223858 8 0.5 8H7.29289L5.89645 9.39645C5.70118 9.59171 5.70118 9.90829 5.89645 10.1036C6.09171 10.2988 6.40829 10.2988 6.60355 10.1036L8.85355 7.85355C9.04882 7.65829 9.04882 7.34171 8.85355 7.14645L6.60355 4.89645Z"
-                    fill="#fff"
-                  ></path>
+                    d="M17.8851 8.29353C17.8851 9.50601 16.8982 10.4889 15.6807 10.4889C14.4633 10.4889 13.4763 9.50601 13.4763 8.29353C13.4763 7.08105 14.4633 6.09814 15.6807 6.09814C16.8982 6.09814 17.8851 7.08105 17.8851 8.29353Z"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                  ></path>{" "}
                 </g>
               </svg>
-              <p>Login</p>
+              <p>Send reset Link</p>
             </button>
           </form>
         </div>
