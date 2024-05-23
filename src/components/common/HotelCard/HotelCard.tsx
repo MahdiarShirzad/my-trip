@@ -6,11 +6,20 @@ import { Link } from "react-router-dom";
 export default function HotelCard() {
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div
-      className={` w-[305px] relative py-3 px-4  my-2 ${
+      className={` w-[305px] h-[383px] relative py-3 px-4  my-2 ${
         darkTheme ? "bg-slate-600" : `bg-white`
-      } rounded-xl  ${darkTheme ? "text-white" : "text-[#4f4b8b]"}`}
+      } rounded-xl  ${
+        darkTheme ? "text-white" : "text-[#4f4b8b] shadow-lg shadow-gray-300"
+      }`}
     >
       <div>
         <img className=" rounded-2xl" src={img} alt="" />
@@ -87,6 +96,7 @@ export default function HotelCard() {
           <p>/Per Night</p>
         </div>
         <Link
+          onClick={scrollToTop}
           to="/hotel-booking"
           className=" flex items-center gap-1 font-interSemiBold"
         >

@@ -16,10 +16,10 @@ export default function Flight({}: Props) {
         <div className=" absolute h-[500px] w-full top-0 flex items-center justify-center z-10 bg-transparent">
           <div className=" container max-w-[1320px] mx-auto">
             <p className=" text-center w-full font-interExtraBold text-4xl text-white">
-              Hotel List
+              Flight List
             </p>
             <p className=" text-white text-center font-inter text-xl mt-4">
-              Find the best Hotels
+              Find the best Flights
             </p>
           </div>
         </div>

@@ -7,6 +7,12 @@ import Login from "../screens/Auth/Login.tsx";
 import SignUp from "../screens/Auth/SignUp.tsx";
 import HotelBooking from "../screens/HotelBooking/HotelBooking.tsx";
 import FlightBooking from "../screens/FlightBooking/FlightBooking.tsx";
+import UserPanel from "../screens/UserPanel/UserPanel.tsx";
+import UserProfile from "../screens/UserPanel/UserProfile.tsx";
+import UserBookings from "../screens/UserPanel/UserBookings.tsx";
+import UserWishList from "../screens/UserPanel/UserWishList.tsx";
+import UserSettings from "../screens/UserPanel/UserSettings.tsx";
+import UserMessages from "../screens/UserPanel/UserMessages.tsx";
 
 const routes: RouteObject[] = [
   {
@@ -41,6 +47,32 @@ const routes: RouteObject[] = [
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "user-panel",
+    element: <UserPanel />,
+    children: [
+      {
+        element: <UserProfile />,
+        path: "/user-panel/profile",
+      },
+      {
+        element: <UserBookings />,
+        path: "/user-panel/bookings",
+      },
+      {
+        element: <UserWishList />,
+        path: "/user-panel/wish-list",
+      },
+      {
+        element: <UserMessages />,
+        path: "/user-panel/messages",
+      },
+      {
+        element: <UserSettings />,
+        path: "/user-panel/settings",
+      },
+    ],
   },
 ];
 

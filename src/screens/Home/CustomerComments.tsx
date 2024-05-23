@@ -67,7 +67,7 @@ export default function CustomerComments() {
           </svg>
         </button>
       </div>
-      <div className="w-3/5 max-lg:w-3/5 mx-auto">
+      <div className="w-3/5 max-lg:w-3/5 mx-auto max-md:w-4/5">
         <Carousel
           responsive={responsive}
           autoPlay={true}

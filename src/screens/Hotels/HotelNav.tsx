@@ -7,7 +7,7 @@ type Props = {};
 const HotelNav = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Sort By Default");
-  const dropdownRef = useRef<HTMLDivElement>(null); // Ref for the dropdown container
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const options = [
     "Sort By Default",

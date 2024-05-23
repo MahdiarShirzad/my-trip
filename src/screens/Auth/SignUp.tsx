@@ -78,7 +78,7 @@ export default function SignUp({}: Props) {
                 </g>
               </svg>
               <input
-                className={`block w-full  px-1 focus:outline-none font-inter ${
+                className={`block w-full  px-1 focus:outline-none font-inter bg-transparent ${
                   darkMode ? "text-gray-200" : "text-slate-800"
                 } bg-transparent`}
                 type="email"
@@ -173,7 +173,7 @@ export default function SignUp({}: Props) {
             <div className="flex items-center justify-between font-inter mt-4">
               <div className=" flex items-center gap-1 justify-between ">
                 <input
-                  className=" block text-lg w-4 h-4 cursor-pointer checked:accent-violet-500"
+                  className=" block text-lg w-4 h-4 cursor-pointer checked:accent-violet-500v bg-transparent"
                   type="checkbox"
                   name="service"
                   id="service"

@@ -6,16 +6,25 @@ import { Link } from "react-router-dom";
 export default function FlightCard() {
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div
-      className={` w-[305px] relative py-3 px-4 ${
+      className={` w-[305px] h-[383px] relative py-3 px-4 my-2  ${
         darkTheme ? "bg-slate-600" : `bg-white`
-      } rounded-xl ${darkTheme ? "text-white" : "text-[#4f4b8b]"}`}
+      } rounded-xl ${
+        darkTheme ? "text-white" : "text-[#4f4b8b] shadow-lg shadow-gray-300"
+      }`}
     >
       <div>
         <img className=" rounded-2xl" src={img} alt="" />
       </div>
-      <div className=" flex font-interBold gap-2 text-xl mt-3">
+      <div className=" flex font-interBold gap-2 text-xl mt-8">
         <p>New York</p>
         <button>
           {" "}
@@ -42,7 +51,7 @@ export default function FlightCard() {
         </button>
         <p>Sari</p>
       </div>
-      <div className=" flex font-interSemiBold gap-1 mt-2">
+      <div className=" flex font-interSemiBold gap-1 mt-6">
         <svg
           className=" w-[20px]"
           viewBox="0 0 24 24"
@@ -71,7 +80,7 @@ export default function FlightCard() {
           <span>Aug 30, 2022</span>
         </div>
       </div>
-      <div className=" flex items-center justify-between border-t mt-4 py-2">
+      <div className=" flex items-center justify-between border-t mt-7 py-2">
         <div className=" flex gap-1 font-interSemiBold text-sm items-center">
           <p>From</p>
           <p className=" flex font-interBold text-lg items-center text-[#f96768]">
@@ -80,6 +89,7 @@ export default function FlightCard() {
           </p>
         </div>
         <Link
+          onClick={scrollToTop}
           to="/flight-booking"
           className=" flex items-center gap-1 font-interSemiBold"
         >
