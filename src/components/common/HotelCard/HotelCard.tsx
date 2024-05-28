@@ -3,7 +3,9 @@ import { RootState } from "../../../features/store";
 import img from "../../../assets/img/hotel/01.jpg";
 import { Link } from "react-router-dom";
 
-export default function HotelCard() {
+export default function HotelCard({ data }) {
+  const { name, price, city, id } = data;
+
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
   const scrollToTop = () => {
@@ -24,9 +26,7 @@ export default function HotelCard() {
       <div>
         <img className=" rounded-2xl" src={img} alt="" />
       </div>
-      <div className="  font-interBold  text-xl mt-3">
-        Western Grant Park Hotel
-      </div>
+      <div className="  font-interBold  text-xl mt-3">{name}</div>
       <div className=" flex font-inter font-semibold gap-1 mt-3">
         <svg
           className=" w-[20px]"
@@ -58,7 +58,7 @@ export default function HotelCard() {
             ></path>{" "}
           </g>
         </svg>
-        <p>25/B Milford Road, New York</p>
+        <p>{city}</p>
       </div>
       <div className=" flex items-center gap-2">
         <div className=" bg-[#ffa903] flex items-center rounded-lg py-1 gap-1 w-14 mt-3">
@@ -91,13 +91,13 @@ export default function HotelCard() {
         <div className=" flex gap-1 font-interSemiBold text-sm items-center">
           <p className=" flex font-interBold text-lg items-center text-[#f96768]">
             <span>$</span>
-            <p>560</p>
+            <p>{price}</p>
           </p>
           <p>/Per Night</p>
         </div>
         <Link
           onClick={scrollToTop}
-          to="/hotel-booking"
+          to={`/hotels/${id}`}
           className=" flex items-center gap-1 font-interSemiBold"
         >
           <p>See Details</p>

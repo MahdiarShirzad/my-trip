@@ -1,11 +1,29 @@
 import { useSelector } from "react-redux";
 import hotelImg from "../../assets/img/hotel/03.jpg";
 import { RootState } from "../../features/store";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getHotels } from "../../services/apiHotels";
 
 type Props = {};
 
 export default function BookingSummary({}: Props) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
+  const { id } = useParams();
+
+  const { data: hotels } = useQuery({
+    queryKey: ["hotel"],
+    queryFn: getHotels,
+  });
+
+  const selectedHotel = hotels?.find((hotel) => {
+    console.log("hotel ID:", hotel.id);
+    console.log("URL ID:", id);
+    return hotel.id == id;
+  });
+
+  console.log(selectedHotel);
 
   return (
     <div
@@ -34,7 +52,10 @@ export default function BookingSummary({}: Props) {
         </div>
         <div className=" flex justify-between items-center my-3 font-inter ">
           <span className=" font-interBold">Per Night Price:</span>
-          <span>20 Aug 2022 at 10:10 AM</span>
+          <p className=" flex gap-1">
+            <span>$</span>
+            <span className=" font-interSemiBold">{selectedHotel.price}</span>
+          </p>
         </div>
         <div className=" flex justify-between items-center my-3 font-inter ">
           <span className=" font-interBold">Passengers:</span>

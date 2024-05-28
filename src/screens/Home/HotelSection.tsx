@@ -7,6 +7,7 @@ import CustomLeftArrow from "../../components/CustomLeftArrow/CustomLeftArrow.ts
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store.ts";
 import HotelCard from "../../components/common/HotelCard/HotelCard.tsx";
+import Loading from "../../components/common/loading/Loading.tsx";
 
 const responsive = {
   superLargeDesktop: {
@@ -31,8 +32,12 @@ const responsive = {
   },
 };
 
-export default function HotelSection() {
+export default function HotelSection({ data, isLoading }) {
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div
@@ -45,28 +50,34 @@ export default function HotelSection() {
           isCommentTitle={false}
         />
         <div className="  lg:px-24 md:px-14  max-md:w-full  relative z-40 max-lg:w-5/6 max-lg:mx-auto ">
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            swipeable={true}
-            draggable={true}
-            showDots={true}
-            infinite={true}
-            partialVisible={false}
-            dotListClass="custom-dot-list-style "
-            // focusOnSelect={true}
-            arrows={true}
-            customRightArrow={<CustomRightArrow />}
-            customLeftArrow={<CustomLeftArrow />}
-          >
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
-          </Carousel>
+          {data ? (
+            <Carousel
+              responsive={responsive}
+              autoPlay={true}
+              swipeable={true}
+              draggable={true}
+              showDots={true}
+              infinite={true}
+              partialVisible={false}
+              dotListClass="custom-dot-list-style "
+              // focusOnSelect={true}
+              arrows={true}
+              customRightArrow={<CustomRightArrow />}
+              customLeftArrow={<CustomLeftArrow />}
+            >
+              {data.slice(-6).map((hotel) => (
+                <HotelCard data={hotel} key={hotel.id} />
+              ))}
+            </Carousel>
+          ) : (
+            <p
+              className={`text-4xl font-interBlack text-center my-20 ${
+                darkTheme ? "text-slate-300" : "text-slate-800"
+              }`}
+            >
+              No Hotels Found ...!
+            </p>
+          )}
         </div>
       </div>
     </div>

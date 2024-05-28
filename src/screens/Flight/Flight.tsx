@@ -1,13 +1,24 @@
-import React from "react";
 import Layout from "../../components/common/layout/Layout";
 import FlightSearch from "../Home/FlightSearch";
 import FlightNav from "./FlightNav";
 import FlightFilter from "./FlightFilter";
 import FlightCard from "../../components/common/FlightCard/FlightCard";
+import { useQuery } from "@tanstack/react-query";
+import { getFlights } from "../../services/apiFlights";
+import Loading from "../../components/common/loading/Loading";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 type Props = {};
 
 export default function Flight({}: Props) {
+  const { data: flights, isLoading } = useQuery({
+    queryKey: ["flight"],
+    queryFn: getFlights,
+  });
+
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
   return (
     <Layout>
       <div className=" relative w-full h-[500x]">
@@ -37,23 +48,21 @@ export default function Flight({}: Props) {
             <div className=" w-5/6">
               <FlightNav />
               <div className=" flex justify-start gap-3 flex-wrap mt-6">
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
-                <FlightCard />
+                {isLoading ? (
+                  <Loading />
+                ) : flights && flights.length > 0 ? (
+                  flights.map((flight) => (
+                    <FlightCard data={flight} key={flight.id} />
+                  ))
+                ) : (
+                  <p
+                    className={`text-4xl font-interBlack text-center my-20 w-full ${
+                      darkMode ? "text-slate-300" : "text-slate-800"
+                    }`}
+                  >
+                    No Hotels Found ...!
+                  </p>
+                )}
               </div>
             </div>
           </div>

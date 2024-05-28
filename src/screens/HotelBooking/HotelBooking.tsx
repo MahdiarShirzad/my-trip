@@ -3,10 +3,21 @@ import Layout from "../../components/common/layout/Layout";
 
 import BookingSummary from "./BookingSummary";
 import BookingPersonalInfo from "../../components/BookingPersonalInfo/BookingPersonalInfo";
+import { useQuery } from "@tanstack/react-query";
+import { getHotels } from "../../services/apiHotels";
+import { useParams } from "react-router-dom";
 
 type Props = {};
 
 export default function HotelBooking({}: Props) {
+  const { data: hotels } = useQuery({
+    queryKey: ["flight"],
+    queryFn: getHotels,
+  });
+
+  const { id } = useParams();
+  const selectedHotels = hotels?.find((hotel) => hotel.id === id);
+
   return (
     <Layout>
       <div className=" relative w-full h-[500x]">
@@ -21,7 +32,7 @@ export default function HotelBooking({}: Props) {
         </div>
       </div>
       <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
-        <BookingSummary />
+        <BookingSummary data={selectedHotels} />
         <BookingPersonalInfo />
       </div>
     </Layout>

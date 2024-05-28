@@ -16,7 +16,6 @@ export default function HotelPassenger() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log("Clicked outside!");
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)

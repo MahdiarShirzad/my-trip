@@ -26,7 +26,7 @@ const routes: RouteObject[] = [
     element: <Hotel />,
   },
   {
-    path: "/hotel-booking",
+    path: "/hotels/:id",
     element: <HotelBooking />,
   },
   {
@@ -34,7 +34,7 @@ const routes: RouteObject[] = [
     element: <Flight />,
   },
   {
-    path: "/flight-booking",
+    path: "/flights/:id",
     element: <FlightBooking />,
   },
   {
@@ -81,11 +81,4 @@ const routes: RouteObject[] = [
   },
 ];
 
-const routers: RouteObject[] = [
-  {
-    path: "/",
-    element: <Home />,
-  },
-];
-
-export { routes, routers };
+export { routes };

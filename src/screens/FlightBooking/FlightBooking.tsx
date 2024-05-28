@@ -1,11 +1,21 @@
-import React from "react";
 import Layout from "../../components/common/layout/Layout";
 import BookingPersonalInfo from "../../components/BookingPersonalInfo/BookingPersonalInfo";
 import FlightBookingSummary from "./FlightBookingSummary";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getFlights } from "../../services/apiFlights";
 
 type Props = {};
 
 export default function FlightBooking({}: Props) {
+  const { data: flights } = useQuery({
+    queryKey: ["flight"],
+    queryFn: getFlights,
+  });
+
+  const { id } = useParams();
+  const selectedFlight = flights?.find((flight) => flight.id === id);
+
   return (
     <Layout>
       <div className=" relative w-full h-[500x]">
@@ -21,7 +31,7 @@ export default function FlightBooking({}: Props) {
       </div>
       <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
         <BookingPersonalInfo />
-        <FlightBookingSummary />
+        <FlightBookingSummary data={selectedFlight} />
       </div>
     </Layout>
   );

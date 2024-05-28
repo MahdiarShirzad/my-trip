@@ -25,8 +25,6 @@ export default function FlightNav({}: Props) {
   // Event listener to close the dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log("Clicked outside!");
-
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)

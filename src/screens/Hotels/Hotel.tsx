@@ -1,14 +1,22 @@
 import React from "react";
 import Layout from "../../components/common/layout/Layout";
 import HotelSearch from "../Home/HotelSearch";
-import { useSelector } from "react-redux";
-import { RootState } from "../../features/store";
 import HotelNav from "./HotelNav";
 import HotelCard from "../../components/common/HotelCard/HotelCard";
 import HotelFilter from "./HotelFilter";
+import { useQuery } from "@tanstack/react-query";
+import { getHotels } from "../../services/apiHotels";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
+import Loading from "../../components/common/loading/Loading";
 
 export default function Hotel(): React.ReactElement {
-  const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
+  const { data: hotelsQuery, isLoading } = useQuery({
+    queryKey: ["hotel"],
+    queryFn: getHotels,
+  });
+
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   return (
     <Layout>
@@ -38,36 +46,22 @@ export default function Hotel(): React.ReactElement {
             <HotelFilter />
             <div className=" w-5/6">
               <HotelNav />
-              <div className=" flex justify-start gap-3 flex-wrap mt-6">
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
-                <HotelCard />
+              <div className="flex justify-start gap-3 flex-wrap mt-6">
+                {isLoading ? (
+                  <Loading />
+                ) : hotelsQuery && hotelsQuery.length > 0 ? (
+                  hotelsQuery.map((hotel) => (
+                    <HotelCard data={hotel} key={hotel.id} />
+                  ))
+                ) : (
+                  <p
+                    className={`text-4xl font-interBlack text-center my-20 w-full ${
+                      darkMode ? "text-slate-300" : "text-slate-800"
+                    }`}
+                  >
+                    No Hotels Found ...!
+                  </p>
+                )}
               </div>
             </div>
           </div>

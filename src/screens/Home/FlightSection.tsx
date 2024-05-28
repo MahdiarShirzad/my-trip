@@ -1,7 +1,28 @@
+import { useSelector } from "react-redux";
 import FlightCard from "../../components/common/FlightCard/FlightCard";
+import Loading from "../../components/common/loading/Loading";
 import Title from "../../components/common/Title/Title";
+import { RootState } from "../../features/store";
 
-export default function FlightSection() {
+type Data = {
+  airline: string;
+  price: number;
+  journey: Date | string;
+  return?: Date;
+  roundWay: boolean;
+  journeyCity: string;
+  returnCity: string;
+};
+
+export default function FlightSection({
+  data,
+  isLoading,
+}: {
+  data: Data;
+  isLoading: boolean;
+}) {
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
   return (
     <div className=" container max-w-[1320px] mx-auto mt-20">
       <Title
@@ -10,14 +31,19 @@ export default function FlightSection() {
         isCommentTitle={false}
       />
       <div className=" flex gap-8 items-center justify-start pt-7 flex-wrap max-lg:justify-center max-lg:px-10">
-        <FlightCard />
-        <FlightCard />
-        <FlightCard />
-        <FlightCard />
-        <FlightCard />
-        <FlightCard />
-        <FlightCard />
-        <FlightCard />
+        {isLoading ? (
+          <Loading />
+        ) : data && data.length > 0 ? (
+          data.map((flight) => <FlightCard data={flight} key={flight.id} />)
+        ) : (
+          <p
+            className={`text-4xl font-interBlack text-center my-20 w-full ${
+              darkMode ? "text-slate-300" : "text-slate-800"
+            }`}
+          >
+            No Hotels Found ...!
+          </p>
+        )}
       </div>
       <button className=" flex items-center gap-1 mx-auto mt-8 text-white bg-[#7167FF] px-4 py-3 rounded-xl font-inter ">
         <p>Discover More</p>
