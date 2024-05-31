@@ -41,7 +41,7 @@ export default function FlightSection({
               darkMode ? "text-slate-300" : "text-slate-800"
             }`}
           >
-            No Hotels Found ...!
+            No Flight Found ...!
           </p>
         )}
       </div>

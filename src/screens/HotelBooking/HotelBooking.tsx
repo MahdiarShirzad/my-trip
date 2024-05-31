@@ -1,4 +1,3 @@
-import React from "react";
 import Layout from "../../components/common/layout/Layout";
 
 import BookingSummary from "./BookingSummary";
@@ -16,7 +15,9 @@ export default function HotelBooking({}: Props) {
   });
 
   const { id } = useParams();
-  const selectedHotels = hotels?.find((hotel) => hotel.id === id);
+  const selectedHotel = hotels?.find((hotel) => hotel.id == id);
+
+  console.log(selectedHotel);
 
   return (
     <Layout>
@@ -32,7 +33,7 @@ export default function HotelBooking({}: Props) {
         </div>
       </div>
       <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
-        <BookingSummary data={selectedHotels} />
+        <BookingSummary selectedHotel={selectedHotel} />
         <BookingPersonalInfo />
       </div>
     </Layout>

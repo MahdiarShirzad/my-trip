@@ -1,29 +1,25 @@
 import { useSelector } from "react-redux";
 import hotelImg from "../../assets/img/hotel/03.jpg";
 import { RootState } from "../../features/store";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getHotels } from "../../services/apiHotels";
+type Props = {
+  adultsCapacity: number;
+  childrenCapacity: number;
+  city: string;
+  created_at: string | Date;
+  description: string;
+  id: number;
+  image: any;
+  infantCapacity: number;
+  name: string;
+  price: string | number;
+};
 
-type Props = {};
-
-export default function BookingSummary({}: Props) {
+export default function BookingSummary({
+  selectedHotel,
+}: {
+  selectedHotel: Props;
+}) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
-
-  const { id } = useParams();
-
-  const { data: hotels } = useQuery({
-    queryKey: ["hotel"],
-    queryFn: getHotels,
-  });
-
-  const selectedHotel = hotels?.find((hotel) => {
-    console.log("hotel ID:", hotel.id);
-    console.log("URL ID:", id);
-    return hotel.id == id;
-  });
-
-  console.log(selectedHotel);
 
   return (
     <div

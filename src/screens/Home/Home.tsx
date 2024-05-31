@@ -6,7 +6,7 @@ import FlightSection from "./FlightSection.tsx";
 import Hero from "./Hero.tsx";
 import HotelSection from "./HotelSection.tsx";
 import ProductBox from "./ProductBox.tsx";
-import { getHotels } from "../../services/apiHotels.tsx";
+import { getHotels } from "../../services/apiHotels.ts";
 import { getFlights } from "../../services/apiFlights.ts";
 
 function Home() {

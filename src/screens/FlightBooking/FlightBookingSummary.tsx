@@ -1,11 +1,6 @@
-import React from "react";
-
 import hotelImg from "../../assets/img/flight/04.jpg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getFlights } from "../../services/apiFlights";
 
 type Data = {
   id: number;
@@ -17,21 +12,16 @@ type Data = {
   journeyCity: string;
   returnCity: string;
   class: string;
+  created_at: Date;
+  passengers: any;
 };
 
-export default function FlightBookingSummary({ data }: { data: Data }) {
+export default function FlightBookingSummary({
+  selectedFlight,
+}: {
+  selectedFlight: Data;
+}) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
-  const { id } = useParams(); 
-  const { data: flights, isLoading } = useQuery({
-    queryKey: ["flight"],
-    queryFn: getFlights,
-  });
-
-  const selectedFlight = flights?.find((flight) => {
-    console.log("Flight ID:", flight.id);
-    console.log("URL ID:", id);
-    return flight.id == id;
-  });
 
   return (
     <div

@@ -239,7 +239,10 @@ export default function UserBtn({}: Props) {
         >
           {userLinks.map((link) => (
             <NavLink
-              onClick={handleSelect}
+              onClick={() => {
+                handleRotate();
+                handleSelect();
+              }}
               className={`flex items-center gap-2 px-4 py-2 my-2 mx-2 rounded-lg  font-interSemiBold ${
                 darkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"
               }`}

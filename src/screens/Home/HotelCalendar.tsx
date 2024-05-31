@@ -53,7 +53,7 @@ export default function HotelCalendar() {
           <p className=" mt-4">{weekDays[returnDayIndex]}</p>
         </div>
         <svg
-          className=" w-[35px]"
+          className=" w-16"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

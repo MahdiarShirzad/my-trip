@@ -5,6 +5,7 @@ import { toggleTheme } from "../../features/themeSlice";
 
 import sun from "../../assets/img/sun.svg";
 import moon from "../../assets/img/moon.svg";
+import moon_light from "../../assets/img/moon-light.svg";
 import { Link } from "react-router-dom";
 
 const HeaderLeft: React.FC = () => {
@@ -155,7 +156,13 @@ const HeaderLeft: React.FC = () => {
           {darkMode ? (
             <img className=" w-10" src={sun} alt="" />
           ) : (
-            <img className=" w-10" src={moon} alt="" />
+            <>
+              {isScrolled ? (
+                <img className=" w-10" src={moon} alt="" />
+              ) : (
+                <img className=" w-10" src={moon_light} alt="" />
+              )}
+            </>
           )}
         </div>
       </div>

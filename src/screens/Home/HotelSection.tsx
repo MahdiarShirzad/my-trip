@@ -75,7 +75,7 @@ export default function HotelSection({ data, isLoading }) {
                 darkTheme ? "text-slate-300" : "text-slate-800"
               }`}
             >
-              No Hotels Found ...!
+              No Hotel Found ...!
             </p>
           )}
         </div>

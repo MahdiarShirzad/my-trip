@@ -16,17 +16,7 @@ export default function UserWishList({}: Props) {
       } rounded-lg font-inter px-7 py-4`}
     >
       <p className=" text-2xl font-interSemiBold pb-3 border-b">My Wish ist</p>
-      <div className=" mt-8 flex flex-wrap justify-between ">
-        <FlightCard />
-        <FlightCard />
-        <HotelCard />
-        <FlightCard />
-        <HotelCard />
-        <FlightCard />
-        <HotelCard />
-        <FlightCard />
-        <HotelCard />
-      </div>
+      <div className=" mt-8 flex flex-wrap justify-between "></div>
     </div>
   );
 }

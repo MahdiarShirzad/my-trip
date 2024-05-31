@@ -59,7 +59,7 @@ export default function Hotel(): React.ReactElement {
                       darkMode ? "text-slate-300" : "text-slate-800"
                     }`}
                   >
-                    No Hotels Found ...!
+                    No Hotel Found ...!
                   </p>
                 )}
               </div>

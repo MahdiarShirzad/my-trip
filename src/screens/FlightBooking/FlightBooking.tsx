@@ -14,7 +14,9 @@ export default function FlightBooking({}: Props) {
   });
 
   const { id } = useParams();
-  const selectedFlight = flights?.find((flight) => flight.id === id);
+  const selectedFlight = flights?.find((flight) => flight.id == id);
+
+  console.log(selectedFlight);
 
   return (
     <Layout>
@@ -31,7 +33,7 @@ export default function FlightBooking({}: Props) {
       </div>
       <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
         <BookingPersonalInfo />
-        <FlightBookingSummary data={selectedFlight} />
+        <FlightBookingSummary selectedFlight={selectedFlight} />
       </div>
     </Layout>
   );
