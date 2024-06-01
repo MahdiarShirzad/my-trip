@@ -23,7 +23,7 @@ export default function Login() {
 
   const initialValues: Values = {
     email: "",
-    password: "mahdiar0987",
+    password: "",
   };
 
   const validation = yup.object().shape({

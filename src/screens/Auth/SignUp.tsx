@@ -6,6 +6,7 @@ import logo from "../../assets/img/logo/logo-dark.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useSignUp } from "./useSignUp";
 
 type Values = {
   email: string;
@@ -14,6 +15,8 @@ type Values = {
 };
 
 export default function SignUp() {
+  const { signUp, isPending } = useSignUp();
+
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   const initialValues: Values = {
@@ -30,7 +33,7 @@ export default function SignUp() {
     fullName: yup.string().required("Please enter your full name"),
     password: yup
       .string()
-      .min(8, "Password should at 8 characters")
+      .min(8, "Password should at least be 8 characters")
       .required("Please enter your password")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)/,
@@ -38,7 +41,15 @@ export default function SignUp() {
       ),
   });
 
-  const onSubmit = () => {};
+  const handleSubmit = (values: Values) => {
+    const { email, password, fullName } = values;
+
+    if (!email || !password || !fullName) {
+      return;
+    }
+
+    signUp({ email, password, fullName });
+  };
 
   return (
     <Layout>
@@ -70,7 +81,7 @@ export default function SignUp() {
           <Formik
             initialValues={initialValues}
             className=" px-20 mt-8"
-            onSubmit={onSubmit}
+            onSubmit={handleSubmit}
             validationSchema={validation}
           >
             <Form>
@@ -249,7 +260,10 @@ export default function SignUp() {
                   Already Sign in?
                 </Link>
               </div>
-              <button className=" flex items-center justify-center gap-1 bg-violet-500 text-white w-full mt-5 py-2 rounded-xl font-interSemiBold">
+              <button
+                type="submit"
+                className=" flex items-center justify-center gap-1 bg-violet-500 text-white w-full mt-5 py-2 rounded-xl font-interSemiBold"
+              >
                 <svg
                   className=" w-[20px]"
                   fill="#fff"
