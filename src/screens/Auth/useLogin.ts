@@ -13,6 +13,7 @@ export function useLogin() {
       loginApi({ email, password }),
     onSuccess: (data) => {
       dispatch(setUser(data));
+      localStorage.setItem("session", JSON.stringify(data.session));
       navigate("/");
     },
   });

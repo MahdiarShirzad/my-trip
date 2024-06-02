@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../features/store";
 import { NavLink } from "react-router-dom";
+import { useLogout } from "../../../screens/Auth/useLogout";
 
 type Props = {};
 
@@ -15,6 +16,8 @@ type Link = {
 export default function UserBtn({}: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const { logout } = useLogout();
 
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
@@ -163,6 +166,10 @@ export default function UserBtn({}: Props) {
     };
   }, []);
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div
       className={`${
@@ -229,8 +236,8 @@ export default function UserBtn({}: Props) {
         </div>
       </button>
       {isOpen && (
-        <ul
-          className={`absolute mt-2 w-full left-0 font-inter shadow text-  ${
+        <div
+          className={`absolute mt-2 w-full px-3 left-0 font-inter shadow text-  ${
             darkMode ? "bg-slate-600 text-white" : "bg-white"
           } rounded-lg z-10`}
         >
@@ -239,8 +246,8 @@ export default function UserBtn({}: Props) {
               onClick={() => {
                 handleSelect();
               }}
-              className={`flex items-center gap-2 px-4 py-2 my-2 mx-2 rounded-lg  font-interSemiBold ${
-                darkMode ? "hover:bg-gray-800" : "hover:bg-gray-200"
+              className={`flex items-center gap-2 px-4 py-2 my-2  rounded-lg  font-interSemiBold ${
+                darkMode ? "hover:bg-gray-800" : "hover:bg-gray-200 text-black"
               }`}
               key={link.id}
               to={link.path}
@@ -249,7 +256,83 @@ export default function UserBtn({}: Props) {
               {link.label}
             </NavLink>
           ))}
-        </ul>
+          <div
+            onClick={handleLogout}
+            className=" px-4 py-2 rounded-lg cursor-pointer my-2 hover:bg-gray-200 w-full flex  gap-2 text-red-600 "
+          >
+            <svg
+              className=" w-[25px]"
+              viewBox="0 0 24 24"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#000000"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <title>Session-Leave</title>{" "}
+                <g
+                  id="Page-1"
+                  stroke="none"
+                  stroke-width="1"
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  {" "}
+                  <g id="Session-Leave">
+                    {" "}
+                    <rect
+                      id="Rectangle"
+                      fill-rule="nonzero"
+                      x="0"
+                      y="0"
+                      width="24"
+                      height="24"
+                    >
+                      {" "}
+                    </rect>{" "}
+                    <line
+                      x1="9"
+                      y1="12"
+                      x2="19"
+                      y2="12"
+                      id="Path"
+                      stroke="#de1b1b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    >
+                      {" "}
+                    </line>{" "}
+                    <path
+                      d="M16,8 L18.5858,10.5858 C19.3668,11.3668 19.3668,12.6332 18.5858,13.4142 L16,16"
+                      id="Path"
+                      stroke="#de1b1b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    >
+                      {" "}
+                    </path>{" "}
+                    <path
+                      d="M16,4 L6,4 C4.89543,4 4,4.89543 4,6 L4,18 C4,19.1046 4.89543,20 6,20 L16,20"
+                      id="Path"
+                      stroke="#de1b1b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    >
+                      {" "}
+                    </path>{" "}
+                  </g>{" "}
+                </g>{" "}
+              </g>
+            </svg>
+            <p>Logout</p>
+          </div>
+        </div>
       )}
     </div>
   );

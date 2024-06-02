@@ -13,6 +13,8 @@ export function useLogout() {
     mutationFn: logoutApi,
     onSuccess: () => {
       dispatch(clearUser());
+      localStorage.removeItem("session");
+      localStorage.removeItem("user");
       queryClient.removeQueries();
       navigate("/login");
     },

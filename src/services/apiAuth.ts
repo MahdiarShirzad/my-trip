@@ -44,9 +44,9 @@ export async function login({ email, password }: Login) {
 }
 
 export async function getCurrentUser() {
-  const { data: session } = await supabase.auth.getSession();
+  const storedSession = JSON.parse(localStorage.getItem("session") || "null");
 
-  if (!session.session) {
+  if (!storedSession) {
     return null;
   }
 
