@@ -1,8 +1,12 @@
+import { useSelector } from "react-redux";
 import profile from "../../assets/img/profile.png";
+import { RootState } from "../../features/store";
 
 type Props = {};
 
 export default function PanelAvatar({}: Props) {
+  const user = useSelector((state: RootState) => state.user.user);
+
   return (
     <div>
       <div className=" relative w-28 h-28 mx-auto mt-2">
@@ -40,8 +44,8 @@ export default function PanelAvatar({}: Props) {
           </svg>
         </div>
       </div>
-      <p className=" text-center mt-3 font-interBold text-xl">
-        Mahdiar Shirzad
+      <p className=" text-center mt-3 font-interBold text-xl capitalize">
+        {user.user.user_metadata.fullName}
       </p>
     </div>
   );

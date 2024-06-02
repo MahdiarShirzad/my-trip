@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { RootState } from "../../features/store";
 import PanelAvatar from "../../components/PanelLayout/PanelAvatar";
+import { useLogout } from "../Auth/useLogout";
 
 type Link = {
   id: number;
@@ -11,6 +12,8 @@ type Link = {
 };
 
 export default function Sidebar() {
+  const { logout } = useLogout();
+
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   const activeClass = ({ isActive }: { isActive: any }) =>
@@ -199,6 +202,10 @@ export default function Sidebar() {
     },
   ];
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div
       className={`w-1/5 ${
@@ -213,7 +220,7 @@ export default function Sidebar() {
         </NavLink>
       ))}
       <button
-        // onClick={handleLogout}
+        onClick={handleLogout}
         className=" px-3 py-2 flex mt-20 gap-2 text-red-600 "
       >
         <svg

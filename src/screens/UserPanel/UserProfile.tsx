@@ -6,6 +6,8 @@ type Props = {};
 export default function UserProfile({}: Props) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
+  const user = useSelector((state: RootState) => state.user.user);
+
   return (
     <div
       className={`w-full ${
@@ -15,11 +17,13 @@ export default function UserProfile({}: Props) {
       <p className=" text-2xl font-interSemiBold pb-3 border-b">Profile Info</p>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Full Name:</span>
-        <span className=" w-1/2">Mahdiar Shirzad</span>
+        <span className=" w-1/2 capitalize">
+          {user.user.user_metadata.fullName}
+        </span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Email:</span>
-        <span className=" w-1/2">mahdiar55582@gmail.com</span>
+        <span className=" w-1/2"> {user.user.user_metadata.email}</span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Phone::</span>
@@ -31,7 +35,7 @@ export default function UserProfile({}: Props) {
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Join Date:</span>
-        <span className=" w-1/2">10/3/2020</span>
+        <span className=" w-1/2">{user.user.created_at}</span>
       </div>
     </div>
   );

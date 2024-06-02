@@ -8,17 +8,23 @@ import HotelSection from "./HotelSection.tsx";
 import ProductBox from "./ProductBox.tsx";
 import { getHotels } from "../../services/apiHotels.ts";
 import { getFlights } from "../../services/apiFlights.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store.ts";
 
 function Home() {
+  const { data: flights, isLoading: flightLoading } = useQuery({
+    queryKey: ["flight"],
+    queryFn: getFlights,
+  });
+
   const { data: hotels, isLoading } = useQuery({
     queryKey: ["hotel"],
     queryFn: getHotels,
   });
 
-  const { data: flights, isLoading: flightLoading } = useQuery({
-    queryKey: ["flight"],
-    queryFn: getFlights,
-  });
+  const { isAuthenticated } = useSelector((state: RootState) => state.user);
+
+  console.log(isAuthenticated);
 
   return (
     <Layout>

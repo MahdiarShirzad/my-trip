@@ -14,10 +14,13 @@ type Link = {
 
 export default function UserBtn({}: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [rotate, setRotate] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
+  const user = useSelector((state: RootState) => state.user.user);
+
+  console.log(user);
 
   const userLinks: Link[] = [
     {
@@ -160,24 +163,19 @@ export default function UserBtn({}: Props) {
     };
   }, []);
 
-  const handleRotate = () => {
-    setRotate(rotate === 0 ? 180 : 0); // Toggle between 0 and 180 degrees
-  };
-
   return (
     <div
       className={`${
         darkMode ? "bg-slate-700 text-gray-200" : "bg-zinc-100"
-      } relative px-5 w-3/5 max-lg:w-2/5 max-sm:w-2/3 max-md:text-sm  py-1 rounded-full `}
+      } relative px-5 w-4/5 max-lg:w-2/5 max-sm:w-2/3 max-md:text-sm  py-1 rounded-full `}
       ref={dropdownRef}
     >
       <button
         className={`${
-          darkMode ? "text-gray-200" : ""
-        }  w-full h-full   flex items-center gap-2 font-interSemiBold text-lg cursor-pointer  text-black `}
+          darkMode ? "text-gray-200 " : ""
+        }  w-full h-full  capitalize flex items-center gap-2 font-interSemiBold text-lg cursor-pointer  text-black `}
         onClick={() => {
           setIsOpen(!isOpen);
-          handleRotate();
         }}
       >
         <svg
@@ -215,14 +213,13 @@ export default function UserBtn({}: Props) {
             ></path>{" "}
           </g>
         </svg>
-        mahdiar
+        {user.user.user_metadata.fullName}
         <div className="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2 text-gray-700">
           <svg
             className="fill-current h-4 w-4 duration-300"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             stroke={darkMode ? "#eee" : "#000"}
-            style={{ transform: `rotate(${rotate}deg)`, width: "17px" }}
           >
             <path
               fill={darkMode ? "#eee" : "#000"}
@@ -240,7 +237,6 @@ export default function UserBtn({}: Props) {
           {userLinks.map((link) => (
             <NavLink
               onClick={() => {
-                handleRotate();
                 handleSelect();
               }}
               className={`flex items-center gap-2 px-4 py-2 my-2 mx-2 rounded-lg  font-interSemiBold ${

@@ -32,7 +32,13 @@ const responsive = {
   },
 };
 
-export default function HotelSection({ data, isLoading }) {
+export default function HotelSection({
+  data,
+  isLoading,
+}: {
+  data: any;
+  isLoading: boolean;
+}) {
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
   if (isLoading) {
@@ -65,7 +71,7 @@ export default function HotelSection({ data, isLoading }) {
               customRightArrow={<CustomRightArrow />}
               customLeftArrow={<CustomLeftArrow />}
             >
-              {data.slice(-6).map((hotel) => (
+              {data.slice(-6).map((hotel: any) => (
                 <HotelCard data={hotel} key={hotel.id} />
               ))}
             </Carousel>

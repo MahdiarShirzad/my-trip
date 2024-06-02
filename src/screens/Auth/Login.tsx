@@ -125,6 +125,7 @@ export default function Login() {
                   title="email"
                   id="email"
                   placeholder="Your Email"
+                  disabled={isPending}
                 />
               </div>
               <ErrorMessage
@@ -173,6 +174,7 @@ export default function Login() {
                   id="password"
                   name="password"
                   placeholder="Your Password"
+                  disabled={isPending}
                 />
                 <div
                   onClick={() => setPasswordIsVisible(!passwordIsVisible)}

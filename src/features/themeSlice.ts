@@ -4,7 +4,6 @@ interface ThemeState {
   darkMode: boolean;
 }
 
-// Function to detect system theme
 const getSystemTheme = (): boolean => {
   return (
     window.matchMedia &&
@@ -12,7 +11,6 @@ const getSystemTheme = (): boolean => {
   );
 };
 
-// Initialize state with system theme or local storage value if available
 const initialState: ThemeState = {
   darkMode: localStorage.getItem("darkMode")
     ? localStorage.getItem("darkMode") === "true"
@@ -25,7 +23,6 @@ const themeSlice = createSlice({
   reducers: {
     toggleTheme: (state) => {
       state.darkMode = !state.darkMode;
-      // Save the user's theme preference to local storage
       localStorage.setItem("darkMode", state.darkMode.toString());
     },
   },
