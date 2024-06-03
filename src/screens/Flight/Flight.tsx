@@ -1,7 +1,6 @@
 import Layout from "../../components/common/layout/Layout";
 import FlightSearch from "../Home/FlightSearch";
 import FlightNav from "./FlightNav";
-import FlightFilter from "./FlightFilter";
 import FlightCard from "../../components/common/FlightCard/FlightCard";
 import { useQuery } from "@tanstack/react-query";
 import { getFlights } from "../../services/apiFlights";
@@ -44,8 +43,7 @@ export default function Flight({}: Props) {
             </button>
           </div>
           <div className="flex items-start justify-between gap-7 my-24">
-            <FlightFilter />
-            <div className=" w-5/6">
+            <div className=" w-full">
               <FlightNav />
               <div className=" flex justify-start gap-3 flex-wrap mt-6">
                 {isLoading ? (

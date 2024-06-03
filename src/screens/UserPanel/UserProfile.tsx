@@ -8,6 +8,23 @@ export default function UserProfile({}: Props) {
 
   const user = useSelector((state: RootState) => state.user.user);
 
+  function formatISODate(isoDate: string): string {
+    const date = new Date(isoDate);
+
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true,
+      timeZone: "UTC",
+    };
+
+    return date.toLocaleString("en-US", options);
+  }
+
   return (
     <div
       className={`w-full ${
@@ -26,8 +43,12 @@ export default function UserProfile({}: Props) {
         <span className=" w-1/2"> {user.user.user_metadata.email}</span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
-        <span className=" w-1/2 font-interSemiBold">Phone::</span>
-        <span className=" w-1/2">+98 938 449 4884</span>
+        <span className=" w-1/2 font-interSemiBold">Phone:</span>
+        <span className=" w-1/2">
+          {user.user.user_metadata.phone === ""
+            ? "no phone number right now"
+            : user.user.user_metadata.phone}
+        </span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Address:</span>
@@ -35,7 +56,7 @@ export default function UserProfile({}: Props) {
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Join Date:</span>
-        <span className=" w-1/2">{user.user.created_at}</span>
+        <span className=" w-1/2">{formatISODate(user.user.created_at)}</span>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import Layout from "../../components/common/layout/Layout";
 import HotelSearch from "../Home/HotelSearch";
 import HotelNav from "./HotelNav";
 import HotelCard from "../../components/common/HotelCard/HotelCard";
-import HotelFilter from "./HotelFilter";
 import { useQuery } from "@tanstack/react-query";
 import { getHotels } from "../../services/apiHotels";
 import { useSelector } from "react-redux";
@@ -43,8 +42,7 @@ export default function Hotel(): React.ReactElement {
             </button>
           </div>
           <div className="flex items-start justify-between gap-7 my-24">
-            <HotelFilter />
-            <div className=" w-5/6">
+            <div className=" w-full">
               <HotelNav />
               <div className="flex justify-start gap-3 flex-wrap mt-6">
                 {isLoading ? (
