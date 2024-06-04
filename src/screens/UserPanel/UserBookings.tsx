@@ -1,17 +1,7 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 
 type Props = {};
-
-type bookingType = {
-  number: number;
-  id: number;
-  type: string;
-  date: Date;
-  price: number;
-  status: string;
-};
 
 export default function UserBookings({}: Props) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);

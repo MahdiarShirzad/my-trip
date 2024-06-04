@@ -13,14 +13,17 @@ type Info = {
   city: string;
 };
 
-export default function BookingPersonalInfo() {
+export default function BookingPersonalInfo({ selectedHotel }: any) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+  const user = useSelector((state: RootState) => state.user.user);
+
+  console.log(selectedHotel);
 
   const initialValues: Info = {
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
+    fullName: user.user.user_metadata.fullName,
+    email: user.user.user_metadata.email,
+    phone: user.user.user_metadata.phone,
+    address: user.user.user_metadata.city,
     country: "",
     city: "",
   };
@@ -89,7 +92,7 @@ export default function BookingPersonalInfo() {
                 </g>
               </svg>
               <Field
-                className={`block w-full  px-1 focus:outline-none font-inter ${
+                className={`block w-full capitalize px-1 focus:outline-none font-inter ${
                   darkMode ? "text-gray-200" : "text-slate-800"
                 } bg-transparent`}
                 type="text"

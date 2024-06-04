@@ -19,6 +19,10 @@ export async function signUp({ email, password, fullName }: SignUp) {
       data: {
         fullName,
         avatar: "",
+        address: "",
+        wishlist: [],
+        booking: [],
+        phone: "",
       },
     },
   });
