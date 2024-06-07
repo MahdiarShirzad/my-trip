@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ThemeState {
+type ThemeState = {
   darkMode: boolean;
-}
+};
 
 const getSystemTheme = (): boolean => {
   return (

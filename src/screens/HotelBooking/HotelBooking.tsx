@@ -1,10 +1,10 @@
 import Layout from "../../components/common/layout/Layout";
 
 import BookingSummary from "./BookingSummary";
-import BookingPersonalInfo from "../../components/BookingPersonalInfo/BookingPersonalInfo";
 import { useQuery } from "@tanstack/react-query";
 import { getHotels } from "../../services/apiHotels";
 import { useParams } from "react-router-dom";
+import BookingPersonalInfoHotel from "../../components/BookingPersonalInfoHotel/BookingPersonalInfoHotel";
 
 type Props = {};
 
@@ -34,7 +34,7 @@ export default function HotelBooking({}: Props) {
       </div>
       <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
         <BookingSummary selectedHotel={selectedHotel} />
-        <BookingPersonalInfo selectedHotel={selectedHotel} />
+        <BookingPersonalInfoHotel selectedHotel={selectedHotel} />
       </div>
     </Layout>
   );

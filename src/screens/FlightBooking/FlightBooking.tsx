@@ -1,9 +1,10 @@
 import Layout from "../../components/common/layout/Layout";
-import BookingPersonalInfo from "../../components/BookingPersonalInfo/BookingPersonalInfo";
+// import BookingPersonalInfo from "../../components/BookingPersonalInfoHotel/BookingPersonalInfo";
 import FlightBookingSummary from "./FlightBookingSummary";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getFlights } from "../../services/apiFlights";
+import BookingPersonalInfoFlight from "../../components/BookingPersonalInfoFlight/BookingPersonalInfoFlight";
 
 type Props = {};
 
@@ -32,7 +33,7 @@ export default function FlightBooking({}: Props) {
         </div>
       </div>
       <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
-        <BookingPersonalInfo />
+        <BookingPersonalInfoFlight selectedFlight={selectedFlight} />
         <FlightBookingSummary selectedFlight={selectedFlight} />
       </div>
     </Layout>

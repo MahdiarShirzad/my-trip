@@ -13,7 +13,7 @@ type Info = {
   city: string;
 };
 
-export default function BookingPersonalInfo({ selectedHotel }: any) {
+export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
   const user = useSelector((state: RootState) => state.user.user);
 

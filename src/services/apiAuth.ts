@@ -11,6 +11,12 @@ type SignUp = {
   fullName: string;
 };
 
+type updateUser = {
+  password: string;
+  fullName: string;
+  avatar: string;
+};
+
 export async function signUp({ email, password, fullName }: SignUp) {
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -21,7 +27,7 @@ export async function signUp({ email, password, fullName }: SignUp) {
         avatar: "",
         address: "",
         wishlist: [],
-        booking: [],
+        bookings: [],
         phone: "",
       },
     },
@@ -69,4 +75,20 @@ export async function logout() {
   if (error) {
     throw new Error(error.message);
   }
+}
+
+export async function updateCurrentUser({
+  password,
+  fullName,
+  avatar,
+}: updateUser) {
+  let updateData;
+
+  if (password) updateData = { password };
+  if (fullName) updateData = { data: { fullName } };
+
+  const { data, error } = await supabase.auth.updateUser(updateData);
+
+  if (error) throw new Error(error.message);
+  if (!avatar) return data;
 }
