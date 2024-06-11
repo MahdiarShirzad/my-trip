@@ -11,12 +11,6 @@ type SignUp = {
   fullName: string;
 };
 
-type updateUser = {
-  password: string;
-  fullName: string;
-  avatar: string;
-};
-
 export async function signUp({ email, password, fullName }: SignUp) {
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -77,18 +71,14 @@ export async function logout() {
   }
 }
 
-export async function updateCurrentUser({
-  password,
-  fullName,
-  avatar,
-}: updateUser) {
-  let updateData;
+export async function updateUser(updates: Partial<SignUp>) {
+  const { data, error } = await supabase.auth.updateUser({
+    data: updates,
+  });
 
-  if (password) updateData = { password };
-  if (fullName) updateData = { data: { fullName } };
+  if (error) {
+    throw new Error(error.message);
+  }
 
-  const { data, error } = await supabase.auth.updateUser(updateData);
-
-  if (error) throw new Error(error.message);
-  if (!avatar) return data;
+  return data;
 }

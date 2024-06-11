@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
-import { Field, Form, Formik, FormikHelpers } from "formik";
-import { useUser } from "../Auth/useUser";
-import { updateCurrentUser } from "../../services/apiAuth";
-// import { updateCurrentUser } from "./your-path-to-updateCurrentUser"; // Import your function
+import { Field, Form, Formik } from "formik";
+import { useUpdateUser } from "./useUpdateUser";
 
 type Value = {
   fullName: string;
@@ -13,11 +11,9 @@ type Value = {
 };
 
 export default function UserSettings() {
-  const { user: curUser } = useUser();
-
   const user = useSelector((state: RootState) => state.user.user);
-
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+  const { mutate: updateUser, isPending: isUpdating } = useUpdateUser();
 
   const initialValues: Value = {
     fullName: user.user.user_metadata.fullName,
@@ -26,20 +22,14 @@ export default function UserSettings() {
     address: user.user.user_metadata.address || "",
   };
 
-  const handleSubmit = async (
-    values: Value,
-    { setSubmitting }: FormikHelpers<Value>
-  ) => {
-    try {
-      await updateCurrentUser({
-        fullName: values.fullName,
-      });
-      alert("Profile updated successfully!");
-    } catch (error) {
-      alert("Error updating profile: " + error.message);
-    } finally {
-      setSubmitting(false);
-    }
+  const handleSubmit = (values: Value) => {
+    const updates = {
+      fullName: values.fullName,
+      phone: values.phone,
+      address: values.address,
+    };
+
+    updateUser(updates);
   };
 
   return (
@@ -146,9 +136,13 @@ export default function UserSettings() {
             <button
               type="submit"
               className="bg-[#7167FF] flex font-inter w-44 px-2 text-center justify-center items-center gap-1 py-3 rounded-lg text-white mt-8"
-              disabled={isSubmitting}
+              disabled={isSubmitting || isUpdating}
             >
-              {isSubmitting ? "Updating..." : "Update Profile Info"}
+              {isSubmitting || isUpdating
+                ? "Updating..."
+                : !isSubmitting || !isUpdating
+                ? "Update Profile Info"
+                : ""}
             </button>
           </Form>
         )}

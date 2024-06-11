@@ -52,7 +52,7 @@ export default function UserProfile({}: Props) {
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Address:</span>
-        <span className=" w-1/2">Iran, Mazandaran, Sari</span>
+        <span className=" w-1/2">{user.user.user_metadata.address}</span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Join Date:</span>
