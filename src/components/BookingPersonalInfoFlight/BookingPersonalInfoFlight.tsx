@@ -34,11 +34,15 @@ export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
   const validation = yup.object().shape({});
 
   const onSubmit = async (values: any) => {
+    const currentBookingsFlight = user?.user_metadata.bookingsFlight || [];
+
+    const updatedBookingsFlight = [...currentBookingsFlight, selectedFlight];
+
     const updates = {
       fullName: values.fullName,
       phone: values.phone,
       address: values.address,
-      bookingsFlight: selectedFlight,
+      bookingsFlight: updatedBookingsFlight,
     };
 
     updateUser(updates);

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { Field, Form, Formik } from "formik";
 import { useUpdateUser } from "./useUpdateUser";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
 
 type Value = {
@@ -17,6 +17,9 @@ export default function UserSettings() {
     queryKey: ["user"],
     queryFn: getCurrentUser,
   });
+
+  const queryClient = useQueryClient();
+
   const { mutate: updateUser, isPending: isUpdating } = useUpdateUser();
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
@@ -35,6 +38,8 @@ export default function UserSettings() {
     };
 
     updateUser(updates);
+
+    queryClient.fetchQuery({ queryKey: ["user"], queryFn: getCurrentUser });
   };
 
   return (

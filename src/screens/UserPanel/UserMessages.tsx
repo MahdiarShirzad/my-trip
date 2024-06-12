@@ -13,7 +13,11 @@ export default function UserMessages({}: Props) {
       } rounded-lg font-inter px-10 py-4 h-96`}
     >
       <p className=" text-2xl font-interSemiBold pb-3 border-b">Messages</p>
-      <div className=" mt-8 flex"></div>
+      <div className=" mt-8 flex">
+        <p className=" text-center w-full mt-20 text-lg">
+          No messages yet ...!
+        </p>
+      </div>
     </div>
   );
 }

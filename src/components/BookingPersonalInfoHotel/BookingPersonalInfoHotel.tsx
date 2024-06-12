@@ -34,11 +34,15 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
   const validation = yup.object().shape({});
 
   const onSubmit = async (values: any) => {
+    const currentBookingsHotels = user?.user_metadata.bookingsHotel || [];
+
+    const updatedBookingsHotels = [...currentBookingsHotels, selectedHotel];
+
     const updates = {
       fullName: values.fullName,
       phone: values.phone,
       address: values.address,
-      bookingsHotel: selectedHotel,
+      bookingsHotel: updatedBookingsHotels,
     };
 
     updateUser(updates);
