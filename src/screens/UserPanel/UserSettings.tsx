@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { Field, Form, Formik } from "formik";
 import { useUpdateUser } from "./useUpdateUser";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
+import toast from "react-hot-toast";
 
 type Value = {
   fullName: string;
@@ -17,8 +18,6 @@ export default function UserSettings() {
     queryKey: ["user"],
     queryFn: getCurrentUser,
   });
-
-  const queryClient = useQueryClient();
 
   const { mutate: updateUser, isPending: isUpdating } = useUpdateUser();
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
@@ -38,8 +37,7 @@ export default function UserSettings() {
     };
 
     updateUser(updates);
-
-    queryClient.fetchQuery({ queryKey: ["user"], queryFn: getCurrentUser });
+    toast.success("Profile updated successfully!");
   };
 
   return (
@@ -146,13 +144,9 @@ export default function UserSettings() {
             <button
               type="submit"
               className="bg-[#7167FF] flex font-inter w-44 px-2 text-center justify-center items-center gap-1 py-3 rounded-lg text-white mt-8"
-              disabled={isSubmitting || isUpdating}
+              disabled={isUpdating}
             >
-              {isSubmitting || isUpdating
-                ? "Updating..."
-                : !isSubmitting || !isUpdating
-                ? "Update Profile Info"
-                : ""}
+              {isUpdating ? "Updating..." : "Update Profile Info"}
             </button>
           </Form>
         )}

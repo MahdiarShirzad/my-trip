@@ -3,6 +3,7 @@ import { logout as logoutApi } from "../../services/apiAuth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearUser } from "../../features/userSlice";
+import toast from "react-hot-toast";
 
 export function useLogout() {
   const navigate = useNavigate();
@@ -16,7 +17,10 @@ export function useLogout() {
       localStorage.removeItem("session");
       localStorage.removeItem("user");
       queryClient.removeQueries();
-      navigate("/login");
+      toast.success("You logged out successfully !");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
     },
   });
 

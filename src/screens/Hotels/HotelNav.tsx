@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 
-type Props = {};
-
-const HotelNav = (props: Props) => {
+const HotelNav = ({ hotels }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Sort By Default");
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -22,7 +20,6 @@ const HotelNav = (props: Props) => {
     setIsOpen(false);
   };
 
-  // Event listener to close the dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -33,10 +30,8 @@ const HotelNav = (props: Props) => {
       }
     };
 
-    // Add event listener when the component is mounted
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Remove event listener on cleanup
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -48,7 +43,7 @@ const HotelNav = (props: Props) => {
         darkMode ? "bg-slate-600 text-white" : "bg-white"
       } px-10 py-4 rounded-lg shadow-md`}
     >
-      <p className="font-bold text-lg">2,350 Results Found</p>
+      <p className="font-bold text-lg">{hotels?.length} Results Found</p>
       <div className="relative" ref={dropdownRef}>
         <button
           className="border-2 border-gray-300 w-52 font-inter focus:outline-none text-left px-4 py-2 rounded-lg cursor-pointer"

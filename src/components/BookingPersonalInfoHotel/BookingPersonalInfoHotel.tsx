@@ -6,6 +6,7 @@ import { Field, Form, Formik } from "formik";
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
 import { useUpdateUser } from "../../screens/UserPanel/useUpdateUser";
+import toast from "react-hot-toast";
 
 type Info = {
   fullName: string;
@@ -45,7 +46,12 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
       bookingsHotel: updatedBookingsHotels,
     };
 
-    updateUser(updates);
+    if (user) {
+      updateUser(updates);
+      toast.success("Hotel booked successfully!");
+    } else {
+      toast.error("First login please!");
+    }
   };
 
   return (
@@ -208,7 +214,6 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
               />
             </div>
           </div>
-
           <div className="w-full mt-5">
             <label
               className={`text-lg ${
@@ -248,7 +253,10 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
             </div>
           </div>
 
-          <button className=" bg-[#7167FF] flex font-inter  w-full mx-auto text-center justify-center items-center gap-1 py-2 rounded-lg text-white mt-8">
+          <button
+            // disabled={!user}
+            className=" bg-[#7167FF] flex font-inter  w-full mx-auto text-center justify-center items-center gap-1 py-2 rounded-lg text-white mt-8"
+          >
             {isUpdating ? (
               "Booking ...!"
             ) : (

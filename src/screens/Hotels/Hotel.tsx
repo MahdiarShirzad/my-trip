@@ -43,7 +43,7 @@ export default function Hotel(): React.ReactElement {
           </div>
           <div className="flex items-start justify-between gap-7 my-24">
             <div className=" w-full">
-              <HotelNav />
+              <HotelNav hotels={hotelsQuery} />
               <div className="flex justify-start gap-3 flex-wrap mt-6">
                 {isLoading ? (
                   <Loading />

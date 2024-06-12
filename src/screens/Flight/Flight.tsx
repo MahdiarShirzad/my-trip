@@ -44,7 +44,7 @@ export default function Flight({}: Props) {
           </div>
           <div className="flex items-start justify-between gap-7 my-24">
             <div className=" w-full">
-              <FlightNav />
+              <FlightNav flights={flights} />
               <div className=" flex justify-start gap-3 flex-wrap mt-6">
                 {isLoading ? (
                   <Loading />

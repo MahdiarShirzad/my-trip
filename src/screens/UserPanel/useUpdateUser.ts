@@ -8,10 +8,6 @@ export function useUpdateUser() {
     mutationFn: updateUser,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
-      alert("User updated successfully");
-    },
-    onError: (error: any) => {
-      console.error("Error updating user", error.message);
     },
   });
 }
