@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { Field, Form, Formik } from "formik";
 import { useQuery } from "@tanstack/react-query";
@@ -15,12 +15,12 @@ type Info = {
 };
 
 export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
-  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
-
   const { data: user } = useQuery({
     queryKey: ["user"],
     queryFn: getCurrentUser,
   });
+
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   const { mutate: updateUser, isPending: isUpdating } = useUpdateUser();
 
@@ -43,8 +43,6 @@ export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
 
     updateUser(updates);
   };
-
-  console.log(selectedFlight);
 
   return (
     <div

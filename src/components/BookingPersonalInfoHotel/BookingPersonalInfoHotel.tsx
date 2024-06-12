@@ -3,34 +3,46 @@ import * as yup from "yup";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { Field, Form, Formik } from "formik";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUser } from "../../services/apiAuth";
+import { useUpdateUser } from "../../screens/UserPanel/useUpdateUser";
 
 type Info = {
   fullName: string;
   email: string;
   phone: string;
   address: string;
-  country: string;
-  city: string;
 };
 
 export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
-  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
-  const user = useSelector((state: RootState) => state.user.user);
+  const { data: user } = useQuery({
+    queryKey: ["user"],
+    queryFn: getCurrentUser,
+  });
 
-  console.log(selectedHotel);
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
+  const { mutate: updateUser, isPending: isUpdating } = useUpdateUser();
 
   const initialValues: Info = {
-    fullName: user.user.user_metadata.fullName,
-    email: user.user.user_metadata.email,
-    phone: user.user.user_metadata.phone,
-    address: user.user.user_metadata.city,
-    country: "",
-    city: "",
+    fullName: user?.user_metadata.fullName,
+    email: user?.user_metadata.email,
+    phone: user?.user_metadata.phone,
+    address: user?.user_metadata.address,
   };
 
   const validation = yup.object().shape({});
 
-  const onSubmit = () => {};
+  const onSubmit = async (values: any) => {
+    const updates = {
+      fullName: values.fullName,
+      phone: values.phone,
+      address: values.address,
+      bookingsHotel: selectedHotel,
+    };
+
+    updateUser(updates);
+  };
 
   return (
     <div
@@ -192,87 +204,7 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
               />
             </div>
           </div>
-          <div className="w-[48%] mt-5">
-            <label
-              className={`text-lg ${
-                darkMode ? "text-gray-200" : "text-slate-600"
-              } font-inter`}
-              htmlFor="Country"
-            >
-              Country
-            </label>
-            <div className=" flex items-center gap-3 border-2 rounded-lg px-4 py-3 mt-2 mx-1">
-              <svg
-                className="w-[23px]"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <path
-                    d="M5.5 16.5H19.5M5.5 8.5H19.5M4.5 12.5H20.5M12.5 20.5C12.5 20.5 8 18.5 8 12.5C8 6.5 12.5 4.5 12.5 4.5M12.5 4.5C12.5 4.5 17 6.5 17 12.5C17 18.5 12.5 20.5 12.5 20.5M12.5 4.5V20.5M20.5 12.5C20.5 16.9183 16.9183 20.5 12.5 20.5C8.08172 20.5 4.5 16.9183 4.5 12.5C4.5 8.08172 8.08172 4.5 12.5 4.5C16.9183 4.5 20.5 8.08172 20.5 12.5Z"
-                    stroke="#aaa"
-                    stroke-width="1.2"
-                  ></path>{" "}
-                </g>
-              </svg>
-              <Field
-                className={`block w-full  px-1 focus:outline-none font-inter ${
-                  darkMode ? "text-gray-200" : "text-slate-800"
-                } bg-transparent`}
-                type="text"
-                title="Country"
-                id="Country"
-                name="Country"
-                placeholder="Your Country"
-              />
-            </div>
-          </div>
-          <div className="w-[48%] mt-5">
-            <label
-              className={`text-lg ${
-                darkMode ? "text-gray-200" : "text-slate-600"
-              } font-inter`}
-              htmlFor="city"
-            >
-              City
-            </label>
-            <div className=" flex items-center gap-3 border-2 rounded-lg px-4 py-3 mt-2 mx-1">
-              <svg
-                className=" w-[23px]"
-                fill="#aaa"
-                viewBox="0 0 50 50"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path d="M10 4L10 20L2.9941406 20L3.1464844 46L17.046875 46L19.046875 46L33 46L47 46L47 8L31 8L31 9L31 28L25.996094 28L25.996094 4.0078125L10 4 z M 12 6L23.996094 6.0078125L23.996094 28L19.013672 28L18.998047 20L18 20L12 20L12 6 z M 15 8L15 10L17 10L17 8L15 8 z M 19.039062 8L19.039062 10L21 10L21 8L19.039062 8 z M 33 10L45 10L45 44L39.960938 44L39.960938 40L38 40L38 44L33 44L33 28L33 10 z M 15 12L15 14L17 14L17 12L15 12 z M 19 12L19 14L21 14L21 12L19 12 z M 36 12.003906L36 14L38 14L38 12.003906L36 12.003906 z M 40.019531 12.007812L40.019531 14.021484L41.980469 14.021484L41.980469 12.007812L40.019531 12.007812 z M 36 16.015625L36 18L38 18L38 16.015625L36 16.015625 z M 40.019531 16.015625L40.019531 18L41.980469 18L41.980469 16.015625L40.019531 16.015625 z M 36 20L36 22L38 22L38 20L36 20 z M 40 20L40 22L41.980469 22L41.980469 20L40 20 z M 5.0058594 22L17.001953 22L17.013672 28L16.998047 28L17.041016 44L11.980469 44L11.980469 40L10.019531 40L10.019531 44L5.1347656 44L5.0058594 22 z M 8 24L8 26.015625L10.039062 26.015625L10.039062 24L8 24 z M 12.039062 24L12.039062 26.015625L14 26.015625L14 24L12.039062 24 z M 36 24.007812L36 25.998047L38 25.998047L38 24.007812L36 24.007812 z M 40 24.007812L40 25.998047L41.980469 25.998047L41.980469 24.007812L40 24.007812 z M 8 27.984375L8 30L10.039062 30L10.039062 27.984375L8 27.984375 z M 12.039062 27.984375L12.039062 30L14 30L14 27.984375L12.039062 27.984375 z M 36 27.992188L36 30.007812L38 30.007812L38 27.992188L36 27.992188 z M 40.019531 27.992188L40.019531 30.007812L41.980469 30.007812L41.980469 27.992188L40.019531 27.992188 z M 19.017578 30L31 30L31 44L26 44L26 40L24 40L24 44L19.042969 44L19.017578 30 z M 8 32L8 34.015625L10.039062 34.015625L10.039062 32L8 32 z M 12.039062 32L12.039062 34.015625L14 34.015625L14 32L12.039062 32 z M 22 32L22 34.015625L24 34.015625L24 32L22 32 z M 26 32L26 34.015625L28 34.015625L28 32L26 32 z M 36 32L36 34.015625L38 34.015625L38 32L36 32 z M 40.019531 32L40.019531 34.015625L41.980469 34.015625L41.980469 32L40.019531 32 z M 22 35.984375L22 38L24 38L24 35.984375L22 35.984375 z M 26 35.984375L26 38L28 38L28 35.984375L26 35.984375 z M 36 35.984375L36 38L38 38L38 35.984375L36 35.984375 z M 40.019531 35.984375L40.019531 38L41.980469 38L41.980469 35.984375L40.019531 35.984375 z"></path>
-                </g>
-              </svg>
-              <Field
-                className={`block w-full  px-1 focus:outline-none font-inter ${
-                  darkMode ? "text-gray-200" : "text-slate-800"
-                } bg-transparent`}
-                type="text"
-                title="city"
-                id="city"
-                name="city"
-                placeholder="Your City"
-              />
-            </div>
-          </div>
+
           <div className="w-full mt-5">
             <label
               className={`text-lg ${
@@ -313,27 +245,33 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
           </div>
 
           <button className=" bg-[#7167FF] flex font-inter  w-full mx-auto text-center justify-center items-center gap-1 py-2 rounded-lg text-white mt-8">
-            Confirm Booking
-            <svg
-              className=" w-[19px]"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                {" "}
-                <path
-                  d="M15.7071 5.29289C15.3166 4.90237 14.6834 4.90237 14.2929 5.29289C13.9024 5.68342 13.9024 6.31658 14.2929 6.70711L18.5858 11L3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13L18.5858 13L14.2929 17.2929C13.9024 17.6834 13.9024 18.3166 14.2929 18.7071C14.6834 19.0976 15.3166 19.0976 15.7071 18.7071L21.7071 12.7071C22.0976 12.3166 22.0976 11.6834 21.7071 11.2929L15.7071 5.29289Z"
-                  fill="#fff"
-                ></path>
-              </g>
-            </svg>
+            {isUpdating ? (
+              "Booking ...!"
+            ) : (
+              <>
+                <p>Confirm Booking</p>
+                <svg
+                  className=" w-[19px]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M15.7071 5.29289C15.3166 4.90237 14.6834 4.90237 14.2929 5.29289C13.9024 5.68342 13.9024 6.31658 14.2929 6.70711L18.5858 11L3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13L18.5858 13L14.2929 17.2929C13.9024 17.6834 13.9024 18.3166 14.2929 18.7071C14.6834 19.0976 15.3166 19.0976 15.7071 18.7071L21.7071 12.7071C22.0976 12.3166 22.0976 11.6834 21.7071 11.2929L15.7071 5.29289Z"
+                      fill="#fff"
+                    ></path>
+                  </g>
+                </svg>
+              </>
+            )}
           </button>
         </Form>
       </Formik>

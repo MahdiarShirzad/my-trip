@@ -19,6 +19,8 @@ export default function BookingSummary({
 }: {
   selectedHotel: Props;
 }) {
+  console.log(selectedHotel);
+
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   return (
