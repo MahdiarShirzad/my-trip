@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../features/store";
 import { NavLink } from "react-router-dom";
 import { useLogout } from "../../../screens/Auth/useLogout";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUser } from "../../../services/apiAuth";
 
 type Props = {};
 
@@ -14,16 +16,17 @@ type Link = {
 };
 
 export default function UserBtn({}: Props) {
+  const { data: user } = useQuery({
+    queryKey: ["user"],
+    queryFn: getCurrentUser,
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const { logout } = useLogout();
 
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
-
-  const user = useSelector((state: RootState) => state.user.user);
-
-  console.log(user);
 
   const userLinks: Link[] = [
     {
@@ -220,7 +223,7 @@ export default function UserBtn({}: Props) {
             ></path>{" "}
           </g>
         </svg>
-        {user.user.user_metadata.fullName}
+        {user?.user_metadata.fullName}
         <div className="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2 text-gray-700">
           <svg
             className="fill-current h-4 w-4 duration-300"

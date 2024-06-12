@@ -36,7 +36,7 @@ const Header = () => {
     >
       <div className="container max-w-[1320px] flex  max-lg:px-8 mx-auto items-center py-4 gap-10 font-inter pr-6 max-lg:justify-between">
         <MobileNav />
-        {<Logo />}
+        <Logo />
         <HeaderNav />
         <HeaderLeft />
       </div>

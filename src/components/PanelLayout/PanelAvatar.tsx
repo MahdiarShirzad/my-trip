@@ -1,16 +1,19 @@
-import { useSelector } from "react-redux";
 import profile from "../../assets/img/profile.png";
-import { RootState } from "../../features/store";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUser } from "../../services/apiAuth";
 
 type Props = {};
 
 export default function PanelAvatar({}: Props) {
-  const user = useSelector((state: RootState) => state.user.user);
+  const { data: user } = useQuery({
+    queryKey: ["user"],
+    queryFn: getCurrentUser,
+  });
 
   return (
     <div>
       <div className=" relative w-28 h-28 mx-auto mt-2">
-        {user.user.user_metadata.avatar ? (
+        {user?.user_metadata.avatar ? (
           <img className=" w-full rounded-full" src={profile} alt="" />
         ) : (
           <svg
@@ -83,7 +86,7 @@ export default function PanelAvatar({}: Props) {
         </div>
       </div>
       <p className=" text-center mt-3 font-interBold text-xl capitalize">
-        {user.user.user_metadata.fullName}
+        {user?.user_metadata.fullName}
       </p>
     </div>
   );

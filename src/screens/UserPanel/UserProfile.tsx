@@ -1,12 +1,19 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUser } from "../../services/apiAuth";
 
 type Props = {};
 
 export default function UserProfile({}: Props) {
-  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+  const { data: userQuery } = useQuery({
+    queryKey: ["user"],
+    queryFn: getCurrentUser,
+  });
 
-  const user = useSelector((state: RootState) => state.user.user);
+  console.log(userQuery);
+
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   function formatISODate(isoDate: string): string {
     const date = new Date(isoDate);
@@ -35,28 +42,28 @@ export default function UserProfile({}: Props) {
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Full Name:</span>
         <span className=" w-1/2 capitalize">
-          {user.user.user_metadata.fullName}
+          {userQuery?.user_metadata.fullName}
         </span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Email:</span>
-        <span className=" w-1/2"> {user.user.user_metadata.email}</span>
+        <span className=" w-1/2"> {userQuery?.user_metadata.email}</span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Phone:</span>
         <span className=" w-1/2">
-          {user.user.user_metadata.phone === ""
+          {userQuery?.user_metadata.phone === ""
             ? "no phone number right now"
-            : user.user.user_metadata.phone}
+            : userQuery?.user_metadata.phone}
         </span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Address:</span>
-        <span className=" w-1/2">{user.user.user_metadata.address}</span>
+        <span className=" w-1/2">{userQuery?.user_metadata.address}</span>
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Join Date:</span>
-        <span className=" w-1/2">{formatISODate(user.user.created_at)}</span>
+        <span className=" w-1/2">{formatISODate(userQuery.created_at)}</span>
       </div>
     </div>
   );

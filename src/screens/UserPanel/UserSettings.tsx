@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { Field, Form, Formik } from "formik";
 import { useUpdateUser } from "./useUpdateUser";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUser } from "../../services/apiAuth";
 
 type Value = {
   fullName: string;
@@ -11,15 +13,18 @@ type Value = {
 };
 
 export default function UserSettings() {
-  const user = useSelector((state: RootState) => state.user.user);
-  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+  const { data: user } = useQuery({
+    queryKey: ["user"],
+    queryFn: getCurrentUser,
+  });
   const { mutate: updateUser, isPending: isUpdating } = useUpdateUser();
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   const initialValues: Value = {
-    fullName: user.user.user_metadata.fullName,
-    email: user.user.email,
-    phone: user.user.user_metadata.phone || "",
-    address: user.user.user_metadata.address || "",
+    fullName: user?.user_metadata.fullName,
+    email: user?.user_metadata.email,
+    phone: user?.user_metadata.phone || "",
+    address: user?.user_metadata.address || "",
   };
 
   const handleSubmit = (values: Value) => {
