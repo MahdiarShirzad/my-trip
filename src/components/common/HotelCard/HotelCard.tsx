@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../../features/store";
-import img from "../../../assets/img/hotel/01.jpg";
 import { Link } from "react-router-dom";
 
-export default function HotelCard({ data }) {
-  const { name, price, city, id } = data;
+export default function HotelCard({ data }: any) {
+  const { name, price, city, id, image } = data;
 
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
@@ -17,16 +16,16 @@ export default function HotelCard({ data }) {
 
   return (
     <div
-      className={` w-[305px] h-[383px] relative py-3 px-4  my-2 ${
+      className={` w-[305px] h-[380px] relative py-3 px-4  my-2 ${
         darkTheme ? "bg-slate-600" : `bg-white`
       } rounded-xl  ${
         darkTheme ? "text-white" : "text-[#4f4b8b] shadow-lg shadow-gray-300"
       }`}
     >
       <div>
-        <img className=" rounded-2xl" src={img} alt="" />
+        <img className=" rounded-2xl" src={image} alt="" />
       </div>
-      <div className="  font-interBold  text-xl mt-3">{name}</div>
+      <div className=" w-full  font-interBold  text-xl mt-3">{name}</div>
       <div className=" flex font-inter font-semibold gap-1 mt-3">
         <svg
           className=" w-[20px]"
@@ -85,7 +84,6 @@ export default function HotelCard({ data }) {
           </svg>
           <p className=" text-sm text-white font-interBold ">5.0</p>
         </div>
-        <p className=" font-interSemiBold mt-3">(2.5k Reviews)</p>
       </div>
       <div className=" flex items-center justify-between border-t mt-4 py-2">
         <div className=" flex gap-1 font-interSemiBold text-sm items-center">

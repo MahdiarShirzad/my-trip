@@ -19,7 +19,7 @@ export default function FlightBookingCard({ data }: any) {
     <div
       className={`w-full flex justify-between ${
         darkMode ? "bg-slate-800" : "bg-gray-50"
-      } px-4 py-5 mb-4 rounded-xl `}
+      } px-4 py-5 mb-4 rounded-xl  text-sm font-inter`}
     >
       <p className="w-[12%]">{airline}</p>
       <p className="w-[12%]">{flightClass}</p>

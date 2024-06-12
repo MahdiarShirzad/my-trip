@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import img from "../../../assets/img/flight/01.jpg";
 import { RootState } from "../../../features/store";
 import { Link } from "react-router-dom";
 
@@ -12,6 +11,7 @@ type Data = {
   roundWay: boolean;
   journeyCity: string;
   returnCity: string;
+  image: string;
 };
 
 export default function FlightCard({ data }: { data: Data }) {
@@ -24,6 +24,7 @@ export default function FlightCard({ data }: { data: Data }) {
     journeyCity,
     returnCity,
     return: returnDate,
+    image,
   } = data;
 
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
@@ -60,7 +61,7 @@ export default function FlightCard({ data }: { data: Data }) {
       }`}
     >
       <div>
-        <img className=" rounded-2xl" src={img} alt="" />
+        <img className=" rounded-2xl w-full h-[180px]" src={image} alt="" />
       </div>
       <p className=" text font-interSemiBold my-2">{airline}</p>
       <div className=" flex font-interBold gap-2 text-xl mt-">
