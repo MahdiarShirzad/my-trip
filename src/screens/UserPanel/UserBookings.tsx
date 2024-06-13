@@ -28,12 +28,12 @@ export default function UserBookings({}: Props) {
       <p className="text-2xl font-interSemiBold pb-3 border-b">My Bookings</p>
       <div className="mt-8 flex flex-col space-y-4">
         {userBookingsFlights && userBookingsFlights.length > 0 && (
-          <div className=" flex items-center justify-between px-3 font-semibold mb-2 border-b pb-3">
+          <div className=" flex items-center justify-between px-3 font-semibold mb-2 border-b pb-3 max-md:text-xs">
             <p className=" w-[12%]">Airline</p>
             <p className=" w-[12%]">Class</p>
+            <p className=" w-[12%]">Way Type</p>
             <p className=" w-[12%]">Journey Date</p>
             <p className=" w-[12%]">Return Date</p>
-            <p className=" w-[12%]">Way Type</p>
             <p className=" w-[12%]">Price</p>
             <p className=" w-[12%]">Journey City</p>
             <p className=" w-[12%]">Return City</p>

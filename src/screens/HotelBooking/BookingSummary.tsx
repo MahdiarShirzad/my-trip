@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import hotelImg from "../../assets/img/hotel/03.jpg";
 import { RootState } from "../../features/store";
+import { useQuery } from "@tanstack/react-query";
+import { getHotels } from "../../services/apiHotels";
 type Props = {
   adultsCapacity: number;
   childrenCapacity: number;
@@ -12,6 +13,7 @@ type Props = {
   infantCapacity: number;
   name: string;
   price: string | number;
+  roomType: string;
 };
 
 export default function BookingSummary({
@@ -19,7 +21,12 @@ export default function BookingSummary({
 }: {
   selectedHotel: Props;
 }) {
-  console.log(selectedHotel);
+  const { data: hotelsQuery, isLoading } = useQuery({
+    queryKey: ["hotel"],
+    queryFn: getHotels,
+  });
+
+  const { name, image, description, roomType } = selectedHotel;
 
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
@@ -30,10 +37,9 @@ export default function BookingSummary({
       }`}
     >
       <p className=" text-2xl my-4  font-interBold">Booking Summary</p>
-      <img className=" rounded-xl" src={hotelImg} alt="" />
-      <h3 className=" my-3 font-interBold  text-xl">
-        Western Grant Park Hotel
-      </h3>
+      <img className=" rounded-xl" src={image} alt="" />
+      <h3 className=" my-2 font-interBold  text-xl">{name}</h3>
+      <p className=" my-2 font-interSemiBold">{description}</p>
       <div>
         <p className="text-lg font-interBold  pb-2 border-b">Order Info</p>
         <div className=" flex justify-between items-center my-3 font-inter ">
@@ -46,7 +52,7 @@ export default function BookingSummary({
         </div>
         <div className=" flex justify-between items-center my-3 font-inter">
           <span className=" font-interBold">Room Type:</span>
-          <span>Superior Double</span>
+          <span>{roomType}</span>
         </div>
         <div className=" flex justify-between items-center my-3 font-inter ">
           <span className=" font-interBold">Per Night Price:</span>

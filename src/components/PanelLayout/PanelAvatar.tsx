@@ -12,12 +12,12 @@ export default function PanelAvatar({}: Props) {
 
   return (
     <div>
-      <div className=" relative w-28 h-28 mx-auto mt-2">
+      <div className=" relative w-28 h-28 max-xl:w-16 max-xl:h-16 mx-auto mt-2">
         {user?.user_metadata.avatar ? (
           <img className=" w-full rounded-full" src={profile} alt="" />
         ) : (
           <svg
-            className=" w-30 max-md:w-8"
+            className=" w-30"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ export default function PanelAvatar({}: Props) {
           </svg>
         </div>
       </div>
-      <p className=" text-center mt-3 font-interBold text-xl capitalize">
+      <p className=" text-center mt-3 font-interBold text-xl capitalize max-xl:text-lg">
         {user?.user_metadata.fullName}
       </p>
     </div>

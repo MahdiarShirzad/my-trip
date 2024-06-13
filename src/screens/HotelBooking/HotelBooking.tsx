@@ -10,14 +10,12 @@ type Props = {};
 
 export default function HotelBooking({}: Props) {
   const { data: hotels } = useQuery({
-    queryKey: ["flight"],
+    queryKey: ["hotel"],
     queryFn: getHotels,
   });
 
   const { id } = useParams();
   const selectedHotel = hotels?.find((hotel) => hotel.id == id);
-
-  console.log(selectedHotel);
 
   return (
     <Layout>

@@ -52,7 +52,7 @@ export default function UserSettings() {
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ isSubmitting }) => (
           <Form className="flex justify-between flex-wrap mt-5">
-            <div className="w-[48%]">
+            <div className="w-[48%] max-md:w-full">
               <label
                 className={`text-lg ${
                   darkMode ? "text-slate-200" : "text-slate-600"
@@ -74,7 +74,7 @@ export default function UserSettings() {
               </div>
             </div>
 
-            <div className="w-[48%]">
+            <div className="w-[48%] max-md:w-full max-md:mt-5">
               <label
                 className={`text-lg ${
                   darkMode ? "text-slate-200" : "text-slate-600"
@@ -97,7 +97,7 @@ export default function UserSettings() {
               </div>
             </div>
 
-            <div className="w-[48%] mt-5">
+            <div className="w-[48%] mt-5 max-md:w-full">
               <label
                 className={`text-lg ${
                   darkMode ? "text-slate-200" : "text-slate-600"

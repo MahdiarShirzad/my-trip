@@ -20,8 +20,8 @@ export default function Sidebar() {
     isActive
       ? `${
           darkMode ? "bg-slate-500" : "bg-gray-300"
-        } flex item-center gap-2  px-3 py-1  rounded-md`
-      : "   px-3 py-1 rounded-md flex item-center gap-2";
+        } flex item-center gap-2  px-3 py-1  rounded-md max-md:text-xs`
+      : "   px-3 py-1 rounded-md flex item-center gap-2 max-md:text-xs";
 
   const panelLinks: Link[] = [
     {
@@ -30,7 +30,7 @@ export default function Sidebar() {
       path: "profile",
       icon: (
         <svg
-          className=" w-4"
+          className=" w-4 max-md:hidden"
           viewBox="0 0 20 20"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ export default function Sidebar() {
       path: "bookings",
       icon: (
         <svg
-          className="w-5"
+          className="w-5 max-md:hidden"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@ export default function Sidebar() {
       path: "messages",
       icon: (
         <svg
-          className=" w-4"
+          className=" w-4 max-md:hidden"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@ export default function Sidebar() {
       path: "settings",
       icon: (
         <svg
-          className=" w-4"
+          className=" w-4 max-md:hidden"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ export default function Sidebar() {
     <div
       className={`w-1/5 ${
         darkMode ? "bg-slate-700 text-white" : "bg-white "
-      } px-5 py-3 flex flex-col gap-5 rounded-md`}
+      } px-5 py-3 flex xl:flex-col max-xl:items-center max-xl:w-[90%] max-xl:gap-0 max-xl:mx-auto gap-5 rounded-md  `}
     >
       <PanelAvatar />
       {panelLinks.map((link) => (
@@ -193,7 +193,7 @@ export default function Sidebar() {
       ))}
       <button
         onClick={handleLogout}
-        className=" px-3 py-2 flex mt-20 gap-2 text-red-600 "
+        className=" px-3 py-2 flex mt-20 gap-2 max-xl:mt-0 text-red-600 max-md:text-sm "
       >
         <svg
           className=" w-[25px]"
@@ -210,7 +210,6 @@ export default function Sidebar() {
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
-            <title>Session-Leave</title>{" "}
             <g
               id="Page-1"
               stroke="none"

@@ -63,7 +63,9 @@ export default function UserProfile({}: Props) {
       </div>
       <div className="flex  w-full justify-between items-center mt-5">
         <span className=" w-1/2 font-interSemiBold">Join Date:</span>
-        <span className=" w-1/2">{formatISODate(userQuery.created_at)}</span>
+        <span className=" w-1/2">
+          {userQuery?.created_at && formatISODate(userQuery.created_at)}
+        </span>
       </div>
     </div>
   );
