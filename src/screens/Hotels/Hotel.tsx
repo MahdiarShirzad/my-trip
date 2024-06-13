@@ -37,7 +37,7 @@ export default function Hotel(): React.ReactElement {
       case "Sort By High Price":
         return [...hotels].sort((a, b) => b.price - a.price);
       default:
-        return initialHotels; // Default sorting (initial order)
+        return initialHotels;
     }
   };
 

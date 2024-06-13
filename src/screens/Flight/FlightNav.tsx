@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
+import { useSearchParams } from "react-router-dom";
 
 export default function FlightNav({ flights }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Sort By Default");
   const dropdownRef = useRef<HTMLDivElement>(null); // Ref for the dropdown container
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const options = [
     "Sort By Default",
@@ -17,6 +19,12 @@ export default function FlightNav({ flights }: any) {
 
   const handleSelect = (option: string) => {
     setSelectedOption(option);
+    if (option === "Sort By Default") {
+      searchParams.delete("sort");
+      setSearchParams(searchParams);
+    } else {
+      setSearchParams({ sort: option });
+    }
     setIsOpen(false);
   };
 
@@ -36,6 +44,11 @@ export default function FlightNav({ flights }: any) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    const sortOption = searchParams.get("sort") || "Sort By Default";
+    setSelectedOption(sortOption);
+  }, [searchParams]);
 
   return (
     <div
@@ -66,14 +79,14 @@ export default function FlightNav({ flights }: any) {
         </button>
         {isOpen && (
           <ul
-            className={`absolute mt-2 w-[110%] font-inter shadow text-  ${
+            className={`absolute mt-2 w-[110%] font-inter shadow ${
               darkMode ? "bg-slate-600 text-white" : "bg-white"
             } rounded-lg z-10`}
           >
             {options.map((option, index) => (
               <li
                 key={index}
-                className={`px-4 py-2 transition-colors  duration-200 mx-3 my-1 rounded-lg cursor-pointer  ${
+                className={`px-4 py-2 transition-colors duration-200 mx-3 my-1 rounded-lg cursor-pointer ${
                   selectedOption === option
                     ? "bg-gray-100 font-interBold text-[#7167FF]"
                     : `hover:bg-gray-100 ${
