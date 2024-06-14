@@ -78,19 +78,9 @@ type UpdateUserParams = {
 };
 
 export async function updateUser({ updates, avatar }: UpdateUserParams) {
-  if (typeof updates === "string") {
-    // Handle the string update
-  }
+  const { data, error } = await supabase.auth.updateUser({ data: updates });
 
-  if (typeof updates === "object" && "avatar" in updates) {
-    // Handle the avatar update
-  }
-
-  const { data } = await supabase.auth.updateUser({
-    data: typeof updates === "object" ? updates : {},
-  });
-
-  const fileName = `avatar-${data.user?.id}-${Math.random()}`;
+  const fileName = `avatar${data.user?.id}-${Math.random()}`;
 
   const { error: storageError } = await supabase.storage
     .from("avatars")
@@ -98,7 +88,7 @@ export async function updateUser({ updates, avatar }: UpdateUserParams) {
 
   if (storageError) throw new Error(storageError.message);
 
-  const { data: updatedUser } = await supabase.auth.updateUser({
+  const { data: updatedUser, error: error2 } = await supabase.auth.updateUser({
     data: {
       avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
     },
