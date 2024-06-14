@@ -12,7 +12,7 @@ function Footer() {
       }`}
     >
       <div className=" container max-w-[1320px] mx-auto pt-20 flex items-start gap-4 max-lg:flex-col max-lg:px-20 max-lg:gap-10">
-        <div className=" w-1/4 max-lg:w-1/3">
+        <div className=" w-1/4 max-lg:w-full">
           <img className=" w-56" src={logo} alt="logo" />
           <p className=" mt-8">
             We are many variations of passages available but the majority have
@@ -125,7 +125,7 @@ function Footer() {
             </p>
           </div>
         </div>
-        <div className=" w-1/6 max-lg:w-1/3">
+        <div className=" w-1/6 max-lg:w-2/3">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"
@@ -277,7 +277,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className=" w-1/6 max-lg:w-1/3">
+        <div className=" w-1/6 max-lg:w-2/3">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"
@@ -429,7 +429,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className=" w-1/6 max-lg:w-1/3">
+        <div className=" w-1/6 max-lg:w-2/3">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"
@@ -437,7 +437,7 @@ function Footer() {
           >
             Help Center
           </p>
-          <div className=" border-b border-violet-600 border-2 mt-3 rounded-full w-1/3"></div>
+          <div className=" border-b border-violet-600 border-2 mt-3 rounded-full w-2/3"></div>
           <div className=" flex flex-col mt-8 gap-4">
             <div className=" flex items-center gap-2">
               <svg
@@ -581,7 +581,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className=" w-1/5 max-lg:w-1/2">
+        <div className=" w-1/5 max-lg:w-full">
           <p
             className={`font-interBold ${
               darkMode ? " text-slate-200" : "text-slate-600"

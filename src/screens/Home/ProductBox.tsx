@@ -108,7 +108,7 @@ function ProductBox() {
           <div
             className={`flex items-center justify-center gap-4 max-lg:mx-44  ${
               darkTheme ? `bg-slate-700` : `bg-white`
-            }  mx-20 rounded-full py-2 -mt-3 text-[#504aa1] font-interBold`}
+            }  mx-20 max-sm:mx-10 rounded-full py-2 -mt-3 text-[#504aa1] font-interBold`}
           >
             {tabItems.map(
               (item: {

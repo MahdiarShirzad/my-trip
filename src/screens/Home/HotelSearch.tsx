@@ -11,7 +11,7 @@ function HotelSearch() {
 
   return (
     <div
-      className={`px-10 py-8  h-64 pb-14 max-lg:h-[600px] justify-between gap-8  flex max-lg:flex-col max-lg:mx-20 -mt-7 ${
+      className={`px-10 py-8  h-64 pb-14 max-lg:h-[600px] justify-between gap-8  flex max-lg:flex-col max-lg:mx-20 max-sm:mx-0 -mt-7 ${
         darkTheme ? `bg-slate-700` : `bg-white`
       }  rounded-3xl ${darkTheme ? "text-white" : "text-[#4f4b8b]"}`}
     >

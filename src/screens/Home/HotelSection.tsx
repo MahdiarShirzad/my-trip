@@ -49,7 +49,7 @@ export default function HotelSection({
     <div
       className={`${darkTheme ? "bg-gray-700" : "bg-slate-200"} py-20 mt-10`}
     >
-      <div className=" container max-w-[1520px] mx-auto max-md:px-1 max-sm:px-28">
+      <div className=" container max-w-[1520px] mx-auto max-md:px-1 max-sm:px-14">
         <Title
           title="HOTEL"
           desc="Our Most Popular Hotels"

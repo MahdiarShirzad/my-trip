@@ -16,7 +16,7 @@ function FlightSearch() {
 
   return (
     <div
-      className={`px-10  -mt-7 max-lg:mx-20 max-lg:h-[630px] ${
+      className={`px-10  -mt-7 max-lg:mx-20 max-sm:mx-0 max-lg:h-[680px] ${
         darkTheme ? `bg-slate-700` : `bg-white`
       } rounded-3xl h-72 py-10 ${darkTheme ? `text-white` : `text-[#4f4b8b]`}`}
     >

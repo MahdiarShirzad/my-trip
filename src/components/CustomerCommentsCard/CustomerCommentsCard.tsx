@@ -4,7 +4,7 @@ import RenderStars from "../common/RenderStars/RenderStars";
 
 export default function CustomerCommentsCard() {
   return (
-    <div className=" bg-white  relative mt-10 w-[360px] h-[310px] rounded-3xl mx-4">
+    <div className=" bg-white  relative mt-10 w-[300px] h-[320px] rounded-3xl mx-4">
       <div className=" absolute w-28 opacity-20 right-5 top-10">
         <img src={quote} alt="" className=" w-full" />
       </div>

@@ -54,12 +54,14 @@ export default function FlightNav({ flights }: any) {
     <div
       className={`flex justify-between items-center ${
         darkMode ? "bg-slate-600 text-white" : "bg-white"
-      } px-10 py-4 rounded-lg shadow-md`}
+      } px-10 py-4 rounded-lg shadow-md max-md:mx-4`}
     >
-      <p className="font-bold text-lg">{flights?.length} Results Found</p>
+      <p className="font-bold text-lg max-sm:text-sm">
+        {flights?.length} Results Found
+      </p>
       <div className="relative" ref={dropdownRef}>
         <button
-          className="border-2 border-gray-300 w-52 font-inter focus:outline-none text-left px-4 py-2 rounded-lg cursor-pointer"
+          className="border-2 border-gray-300 w-52 max-md:w-40 font-inter focus:outline-none text-left px-4 py-2 rounded-lg cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

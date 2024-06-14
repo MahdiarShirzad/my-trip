@@ -65,10 +65,6 @@ export default function FlightCities() {
           value={beginningCity}
           onChange={handleBeginningChange}
         />
-
-        <p className=" font-interSemiBold mt-3 text-sm">
-          JFK - John F. Kennedy International Airport
-        </p>
       </div>
       <div
         onClick={destinationCity ? changeCity : undefined}
@@ -140,10 +136,6 @@ export default function FlightCities() {
           value={destinationCity}
           onChange={handleDestinationChange}
         />
-
-        <p className=" font-interSemiBold mt-3 text-sm">
-          JFK - John F. Kennedy International Airport
-        </p>
       </div>
     </div>
   );
