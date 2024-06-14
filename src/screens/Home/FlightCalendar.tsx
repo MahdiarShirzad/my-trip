@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector } from "react-redux";
@@ -11,9 +11,9 @@ export default function FlightCalendar({ type }: { type: string }) {
 
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
 
-  const formattedDate = `${
-    journeyDate.getMonth() + 1
-  }/${journeyDate.getDate()}/${journeyDate.getFullYear()}`;
+  // const formattedDate = `${
+  //   journeyDate.getMonth() + 1
+  // }/${journeyDate.getDate()}/${journeyDate.getFullYear()}`;
 
   // const returnDate = new Date(journeyDate);
   returnDate.setMonth(returnDate.getMonth() + 1);
@@ -22,9 +22,9 @@ export default function FlightCalendar({ type }: { type: string }) {
     returnDate.setFullYear(returnDate.getFullYear() + 1);
   }
 
-  const formattedReturnDate = `${
-    returnDate.getMonth() + 1
-  }/${returnDate.getDate()}/${returnDate.getFullYear()}`;
+  // const formattedReturnDate = `${
+  //   returnDate.getMonth() + 1
+  // }/${returnDate.getDate()}/${returnDate.getFullYear()}`;
 
   const weekDays = [
     "Sunday",

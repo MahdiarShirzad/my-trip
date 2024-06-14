@@ -7,16 +7,16 @@ export default function HotelCalendar() {
   const [journeyDate, setJourneyDate] = useState<Date>(curDate);
   const [returnDate, setReturnDate] = useState<Date>(new Date());
 
-  const formattedDate = `${
-    journeyDate.getMonth() + 1
-  }/${journeyDate.getDate()}/${journeyDate.getFullYear()}`;
+  // const formattedDate = `${
+  //   journeyDate.getMonth() + 1
+  // }/${journeyDate.getDate()}/${journeyDate.getFullYear()}`;
 
   // const returnDate = new Date(journeyDate);
   returnDate.setMonth(returnDate.getMonth() + 1);
 
-  const formattedReturnDate = `${returnDate.getMonth()}/${
-    returnDate.getDate() + 1
-  }/${returnDate.getFullYear()}`;
+  // const formattedReturnDate = `${returnDate.getMonth()}/${
+  //   returnDate.getDate() + 1
+  // }/${returnDate.getFullYear()}`;
 
   const weekDays = [
     "Sunday",

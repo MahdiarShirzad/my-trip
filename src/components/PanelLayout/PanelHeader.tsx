@@ -2,7 +2,6 @@ import { RootState } from "../../features/store";
 import { useSelector } from "react-redux";
 import MobileNav from "../header/MobileNav";
 import HeaderNav from "../header/HeaderNav";
-import HeaderLeft from "../header/HeaderLeft";
 import PanelLogo from "../common/logo/PanelLogo";
 import PanelHeaderLeft from "./PanelHeaderLeft";
 

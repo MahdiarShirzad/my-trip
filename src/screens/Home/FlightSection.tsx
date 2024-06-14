@@ -5,21 +5,11 @@ import Title from "../../components/common/Title/Title";
 import { RootState } from "../../features/store";
 import { Link } from "react-router-dom";
 
-type Data = {
-  airline: string;
-  price: number;
-  journey: Date | string;
-  return?: Date;
-  roundWay: boolean;
-  journeyCity: string;
-  returnCity: string;
-};
-
 export default function FlightSection({
   data,
   isLoading,
 }: {
-  data: Data;
+  data: any;
   isLoading: boolean;
 }) {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
@@ -35,7 +25,9 @@ export default function FlightSection({
         {isLoading ? (
           <Loading />
         ) : data && data.length > 0 ? (
-          data.map((flight) => <FlightCard data={flight} key={flight.id} />)
+          data.map((flight: any) => (
+            <FlightCard data={flight} key={flight.id} />
+          ))
         ) : (
           <p
             className={`text-4xl font-interBlack text-center my-20 w-full ${

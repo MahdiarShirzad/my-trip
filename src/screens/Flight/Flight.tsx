@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../components/common/layout/Layout";
 import FlightSearch from "../Home/FlightSearch";
 import FlightNav from "./FlightNav";
@@ -10,14 +10,14 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { useSearchParams } from "react-router-dom";
 
-export default function Flight({}: Props) {
+export default function Flight({}) {
   const { data: flightsQuery, isLoading } = useQuery({
     queryKey: ["flight"],
     queryFn: getFlights,
   });
 
-  const [flights, setFlights] = useState([]);
-  const [initialFlights, setInitialFlights] = useState([]);
+  const [flights, setFlights] = useState<any>([]);
+  const [initialFlights, setInitialFlights] = useState<any>([]);
 
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
   const [searchParams] = useSearchParams();
@@ -29,7 +29,7 @@ export default function Flight({}: Props) {
     }
   }, [flightsQuery]);
 
-  const sortFlights = (flights) => {
+  const sortFlights = (flights: any) => {
     const sortOption = searchParams.get("sort");
     switch (sortOption) {
       case "Sort By Low Price":
@@ -72,7 +72,7 @@ export default function Flight({}: Props) {
                 {isLoading ? (
                   <Loading />
                 ) : flights && flights.length > 0 ? (
-                  sortFlights(flights).map((flight) => (
+                  sortFlights(flights).map((flight: any) => (
                     <FlightCard data={flight} key={flight.id} />
                   ))
                 ) : (

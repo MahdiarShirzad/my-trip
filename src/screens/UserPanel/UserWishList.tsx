@@ -1,8 +1,5 @@
-import React from "react";
 import { RootState } from "../../features/store";
 import { useSelector } from "react-redux";
-import HotelCard from "../../components/common/HotelCard/HotelCard";
-import FlightCard from "../../components/common/FlightCard/FlightCard";
 
 type Props = {};
 

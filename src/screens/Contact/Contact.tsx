@@ -1,4 +1,3 @@
-import React from "react";
 import Layout from "../../components/common/layout/Layout";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";

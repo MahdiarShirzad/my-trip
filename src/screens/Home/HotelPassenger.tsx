@@ -4,7 +4,6 @@ import { RootState } from "../../features/store";
 
 export default function HotelPassenger() {
   const [tabIsOpen, setTabIsOpen] = useState<boolean>(false);
-  const [passengers, setPassengers] = useState<number>(0);
   const [roomType, setRoomType] = useState<string>("Double Room");
 
   const [adults, setAdults] = useState<number>(1);

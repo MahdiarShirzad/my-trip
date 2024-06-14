@@ -6,7 +6,7 @@ type Data = {
   id: number;
   airline: string;
   price: number;
-  journey: Date | string;
+  journey: any;
   return?: Date;
   roundWay: boolean;
   journeyCity: string;

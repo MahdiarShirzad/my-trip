@@ -30,7 +30,7 @@ export default function UserSettings() {
   };
 
   const handleSubmit = (values: Value) => {
-    const updates = {
+    const updates: any = {
       fullName: values.fullName,
       phone: values.phone,
       address: values.address,
@@ -50,7 +50,7 @@ export default function UserSettings() {
         Update Profile Info
       </p>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        {({ isSubmitting }) => (
+        {() => (
           <Form className="flex justify-between flex-wrap mt-5">
             <div className="w-[48%] max-md:w-full">
               <label

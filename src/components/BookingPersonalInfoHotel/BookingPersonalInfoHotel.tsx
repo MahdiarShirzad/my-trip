@@ -5,7 +5,7 @@ import { RootState } from "../../features/store";
 import { Field, Form, Formik } from "formik";
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
-import { useUpdateUser } from "../../screens/UserPanel/useUpdateUser";
+import { useUpdateUser } from "../../screens/UserPanel/useUpdateUser.js";
 import toast from "react-hot-toast";
 
 type Info = {
@@ -39,7 +39,7 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
 
     const updatedBookingsHotels = [...currentBookingsHotels, selectedHotel];
 
-    const updates = {
+    const updates: any = {
       fullName: values.fullName,
       phone: values.phone,
       address: values.address,

@@ -71,12 +71,11 @@ export default function FlightCities() {
         </p>
       </div>
       <div
-        onClick={destinationCity && changeCity}
+        onClick={destinationCity ? changeCity : undefined}
         className={`  rounded-full  p-1 border-4 border-[#4f4b8b] -mx-2 bg-white z-10 cursor-pointer 
            ${!destinationCity && !beginningCity && `cursor-not-allowed`}
          `}
       >
-        {""}
         <svg
           className={`w-[25px] ${
             !destinationCity && !beginningCity && `cursor-not-allowed`

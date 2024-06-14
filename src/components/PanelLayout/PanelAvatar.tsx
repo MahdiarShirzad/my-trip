@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
 import { Formik, Field, Form } from "formik";
-import { useUpdateUser } from "../../screens/UserPanel/useUpdateUser";
+import { useUpdateUser } from "../../screens/UserPanel/useUpdateUser.js";
 import { useState, useEffect } from "react";
 import supabase, { supabaseUrl } from "../../services/supabase";
 import spinner from "../../assets/img/spinner.gif";
@@ -18,7 +18,7 @@ export default function PanelAvatar({}: Props) {
   const [avatar, setAvatar] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
-  const { mutate: updateUser, isPending: isUpdating } = useUpdateUser();
+  const { mutate: updateUser } = useUpdateUser();
 
   useEffect(() => {
     if (user) {
@@ -39,8 +39,8 @@ export default function PanelAvatar({}: Props) {
 
     setIsUploading(true);
 
-    const fileName = `avatar-${user.id}-${Math.random()}`;
-    const { data, error } = await supabase.storage
+    const fileName = `avatar-${user?.id}-${Math.random()}`;
+    const { error } = await supabase.storage
       .from("avatars")
       .upload(`images/${fileName}`, file);
 
@@ -52,13 +52,13 @@ export default function PanelAvatar({}: Props) {
 
     const avatarUrl = `${supabaseUrl}/storage/v1/object/public/avatars/images/${fileName}`;
 
-    const updates = {
+    const updates: any = {
       avatar: avatarUrl,
     };
 
     updateUser(updates);
     setAvatar(avatarUrl);
-    localStorage.setItem(`avatarUrl-${user.id}`, avatarUrl);
+    localStorage.setItem(`avatarUrl-${user?.id}`, avatarUrl);
     setIsUploading(false);
     toast.success("Profile updated successfully!");
   };
@@ -112,7 +112,7 @@ export default function PanelAvatar({}: Props) {
             </svg>
           )}
         </div>
-        <Formik initialValues={{ avatar: null }}>
+        <Formik onSubmit={() => {}} initialValues={{ avatar: null }}>
           <Form>
             <label
               htmlFor="avatar"

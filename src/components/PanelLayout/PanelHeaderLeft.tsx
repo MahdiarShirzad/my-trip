@@ -1,32 +1,14 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 import { toggleTheme } from "../../features/themeSlice";
 
 import sun from "../../assets/img/sun.svg";
 import moon from "../../assets/img/moon.svg";
-import { Link } from "react-router-dom";
 import UserBtn from "../common/UserBtn/UserBtn";
 
 type Props = {};
 
 export default function PanelHeaderLeft({}: Props) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const scrollThreshold = 5;
-      setIsScrolled(scrollPosition > scrollThreshold);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const dispatch = useDispatch();
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 

@@ -16,8 +16,8 @@ export default function Hotel(): React.ReactElement {
     queryFn: getHotels,
   });
 
-  const [hotels, setHotels] = useState([]);
-  const [initialHotels, setInitialHotels] = useState([]);
+  const [hotels, setHotels] = useState<any>([]);
+  const [initialHotels, setInitialHotels] = useState<any>([]);
 
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
   const [searchParams] = useSearchParams();
@@ -29,7 +29,7 @@ export default function Hotel(): React.ReactElement {
     }
   }, [hotelsQuery]);
 
-  const sortHotels = (hotels) => {
+  const sortHotels = (hotels: any) => {
     const sortOption = searchParams.get("sort");
     switch (sortOption) {
       case "Sort By Low Price":
@@ -72,7 +72,7 @@ export default function Hotel(): React.ReactElement {
                 {isLoading ? (
                   <Loading />
                 ) : hotels && hotels.length > 0 ? (
-                  sortHotels(hotels).map((hotel) => (
+                  sortHotels(hotels).map((hotel: any) => (
                     <HotelCard data={hotel} key={hotel.id} />
                   ))
                 ) : (

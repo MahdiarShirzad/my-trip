@@ -1,4 +1,3 @@
-import React from "react";
 import HotelNameSearch from "./HotelNameSearch";
 import HotelCalendar from "./HotelCalendar";
 import HotelPassenger from "./HotelPassenger";

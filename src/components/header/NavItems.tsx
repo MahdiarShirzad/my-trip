@@ -4,11 +4,6 @@ import styles from "./Header.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
 
-const activeClass = (isActive: boolean) =>
-  isActive
-    ? "pb-2 border-b-2 border-[#1A064F] transition-none"
-    : "transition-none pb-2";
-
 const NavItems: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({

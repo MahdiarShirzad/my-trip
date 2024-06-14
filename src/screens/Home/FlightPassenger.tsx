@@ -4,7 +4,7 @@ import { RootState } from "../../features/store";
 
 export default function FlightPassenger() {
   const [tabIsOpen, setTabIsOpen] = useState<boolean>(false);
-  const [passengers, setPassengers] = useState<number>(0);
+  // const [passengers, setPassengers] = useState<number>(0);
   const [classType, setClassType] = useState<string>("First Class");
 
   const [adults, setAdults] = useState<number>(0);
@@ -94,7 +94,7 @@ export default function FlightPassenger() {
         <div onClick={tabHandler} className=" cursor-pointer">
           <p className=" font-interBold text-xl mt-3">
             {adults + children + infants} Passenger
-            {passengers ? `s` : ``}
+            {/* {passengers ? `s` : ``} */}
           </p>
           <p className=" font-interSemiBold mt-3 text-sm">{classType}</p>
         </div>

@@ -12,9 +12,7 @@ import UserBtn from "../common/UserBtn/UserBtn";
 const HeaderLeft: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const { user, isAuthenticated } = useSelector(
-    (state: RootState) => state.user
-  );
+  const { isAuthenticated } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     const handleScroll = () => {

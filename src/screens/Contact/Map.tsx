@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
-
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { icon } from "leaflet";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
+import { LatLngTuple } from "leaflet";
 
 const Map = () => {
   const darkMode = useSelector((state: RootState) => state.theme);
 
-  const location = [36.547993380527124, 53.0467722859122];
+  const location: LatLngTuple = [36.547993380527124, 53.0467722859122];
 
-  const customIcon = new icon({
+  const customIcon = icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/128/2776/2776000.png",
     iconSize: [50, 50],
   });

@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
-import { useQuery } from "@tanstack/react-query";
-import { getHotels } from "../../services/apiHotels";
 type Props = {
   adultsCapacity: number;
   childrenCapacity: number;
@@ -21,10 +19,10 @@ export default function BookingSummary({
 }: {
   selectedHotel: Props;
 }) {
-  const { data: hotelsQuery, isLoading } = useQuery({
-    queryKey: ["hotel"],
-    queryFn: getHotels,
-  });
+  // const { data: hotelsQuery, isLoading } = useQuery({
+  //   queryKey: ["hotel"],
+  //   queryFn: getHotels,
+  // });
 
   const { name, image, description, roomType } = selectedHotel;
 
