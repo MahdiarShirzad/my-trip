@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import supabase, { supabaseUrl } from "./supabase";
 
 type Login = {
   email: string;
@@ -72,14 +72,24 @@ export async function logout() {
   }
 }
 
-export async function updateUser(updates: Partial<SignUp>) {
+export async function updateUser(updates: Partial<SignUp>, avatar: any) {
   const { data, error } = await supabase.auth.updateUser({
     data: updates,
   });
 
-  if (error) {
-    throw new Error(error.message);
-  }
+  const fileName = `avatar-${data.user.id}-${Math.random()}`;
 
-  return data;
+  const { error: storageError } = await supabase.storage
+    .from("avatars")
+    .upload(fileName, avatar);
+
+  if (storageError) throw new Error(storageError.message);
+
+  const { data: updatedUser, error: error2 } = await supabase.auth.updateUser({
+    data: {
+      avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
+    },
+  });
+
+  return { data, updatedUser };
 }

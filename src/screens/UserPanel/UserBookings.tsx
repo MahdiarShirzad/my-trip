@@ -1,11 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
-import { useUser } from "../Auth/useUser";
 import FlightBookingCard from "../../components/FlightBookingCard/FlightBookingCard";
 import HotelBookingCard from "../../components/HotelBookingCard/HotelBookingCard";
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
-import { divideColor } from "tailwindcss-classnames";
 
 type Props = {};
 

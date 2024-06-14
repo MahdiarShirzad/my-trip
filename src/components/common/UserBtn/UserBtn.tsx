@@ -181,14 +181,14 @@ export default function UserBtn({}: Props) {
       ref={dropdownRef}
     >
       <button
-        className={`${
+        className={` py-2 px-2  ${
           darkMode ? "text-gray-200 " : ""
         }  w-full h-full  capitalize flex items-center gap-2 font-interSemiBold text-lg cursor-pointer  text-black `}
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
-        <svg
+        {/* <svg
           className=" w-10 max-md:w-8"
           viewBox="0 0 24 24"
           fill="none"
@@ -222,7 +222,7 @@ export default function UserBtn({}: Props) {
               stroke-linecap="round"
             ></path>{" "}
           </g>
-        </svg>
+        </svg> */}
         {user?.user_metadata.fullName}
         <div className="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2 text-gray-700">
           <svg
