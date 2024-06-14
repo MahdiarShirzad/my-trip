@@ -11,7 +11,7 @@ export default function NotFound({}: Props) {
       <div className=" py-12 max-w-[1320px] mx-auto flex flex-col items-center">
         <img className=" mx-auto w-2/5 " src={notFound} alt="" />
         <Link
-          className="bg-violet-600 block font-interSemiBold px-3 py-2 rounded-lg text-white"
+          className="bg-violet-600  block font-interSemiBold px-3 py-2 rounded-lg text-white"
           to="/"
         >
           Return to Home

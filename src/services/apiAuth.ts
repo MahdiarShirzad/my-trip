@@ -78,7 +78,7 @@ type UpdateUserParams = {
 };
 
 export async function updateUser({ updates, avatar }: UpdateUserParams) {
-  const { data, error } = await supabase.auth.updateUser({ data: updates });
+  const { data } = await supabase.auth.updateUser({ data: updates });
 
   const fileName = `avatar${data.user?.id}-${Math.random()}`;
 
@@ -88,7 +88,7 @@ export async function updateUser({ updates, avatar }: UpdateUserParams) {
 
   if (storageError) throw new Error(storageError.message);
 
-  const { data: updatedUser, error: error2 } = await supabase.auth.updateUser({
+  const { data: updatedUser } = await supabase.auth.updateUser({
     data: {
       avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
     },
