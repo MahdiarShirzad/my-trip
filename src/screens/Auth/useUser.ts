@@ -2,19 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import { getCurrentUser } from "../../services/apiAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../features/userSlice";
-// import { RootState } from "../../features/store";
+import { RootState } from "../../features/store";
 
 export function useUser() {
   const dispatch = useDispatch();
   const { isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: getCurrentUser,
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       dispatch(setUser(data));
     },
   });
 
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state: RootState) => state.user);
 
   return {
     isLoading,

@@ -72,27 +72,42 @@ export async function logout() {
   }
 }
 
-type UpdateUserParams = {
-  updates: Partial<SignUp>;
-  avatar: any;
-};
+// type UpdateUserParams = {
+//   updates: Partial<SignUp>;
+//   avatar: any;
+// };
 
-export async function updateUser({ updates, avatar }: UpdateUserParams) {
-  const { data } = await supabase.auth.updateUser({ data: updates });
+export async function updateUser(updates: Partial<SignUp>, avatar: File) {
+  const { data, error } = await supabase.auth.updateUser({
+    data: updates,
+  });
 
-  const fileName = `avatar${data.user?.id}-${Math.random()}`;
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  const fileName = `avatar-${data.user.id}-${Math.random()}`;
 
   const { error: storageError } = await supabase.storage
     .from("avatars")
     .upload(fileName, avatar);
 
-  if (storageError) throw new Error(storageError.message);
+  if (storageError) {
+    throw new Error(storageError.message);
+  }
 
-  const { data: updatedUser } = await supabase.auth.updateUser({
-    data: {
-      avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
-    },
-  });
+  const avatarUrl = `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`;
 
-  return { data, updatedUser };
+  const { data: updatedUser, error: updateError } =
+    await supabase.auth.updateUser({
+      data: {
+        avatar: avatarUrl,
+      },
+    });
+
+  if (updateError) {
+    throw new Error(updateError.message);
+  }
+
+  return { user: updatedUser, avatarUrl };
 }
