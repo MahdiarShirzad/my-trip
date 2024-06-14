@@ -67,7 +67,7 @@ export default function SignUp() {
           </div>
         </div>
       </div>
-      <div className=" max-w-[1320px] mx-auto my-20 max-lg:py-20">
+      <div className=" max-w-[1320px] mx-auto my-20 max-lg:py-40 max-lg:mt-0">
         <div
           className={`max-w-[610px] px-20 ${
             darkMode ? "bg-slate-800" : "bg-white"
@@ -301,23 +301,6 @@ export default function SignUp() {
                 className="text-red-500 text-sm mt-1"
               />
               <div className="flex items-center justify-between font-inter mt-4">
-                <div className=" flex items-center gap-1 justify-between ">
-                  <input
-                    className=" block text-lg w-4 h-4 cursor-pointer checked:accent-violet-500v bg-transparent"
-                    type="checkbox"
-                    name="service"
-                    id="service"
-                    title="service"
-                  />
-                  <label
-                    className={`block cursor-pointer ${
-                      darkMode ? "text-gray-200" : "text-gray-600"
-                    }`}
-                    htmlFor="service"
-                  >
-                    I agree with the Terms Of Service.
-                  </label>
-                </div>
                 <Link
                   className={darkMode ? "text-violet-300" : "text-violet-500"}
                   to="/login"

@@ -30,7 +30,7 @@ export default function HotelBooking({}: Props) {
           </div>
         </div>
       </div>
-      <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
+      <div className="flex items-start gap-8 my-20 max-lg:flex-wrap max-w-[1320px] mx-auto">
         <BookingSummary selectedHotel={selectedHotel} />
         <BookingPersonalInfoHotel selectedHotel={selectedHotel} />
       </div>

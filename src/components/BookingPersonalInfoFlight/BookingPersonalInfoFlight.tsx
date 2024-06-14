@@ -56,7 +56,7 @@ export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
 
   return (
     <div
-      className={`w-3/5  px-10 py-6 rounded-xl ${
+      className={`w-3/5 max-lg:w-full max-lg:mx-2 px-10 py-6 rounded-xl ${
         darkMode ? "bg-slate-600" : "bg-white"
       }`}
     >
@@ -73,7 +73,7 @@ export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
         initialValues={initialValues}
       >
         <Form className=" flex justify-between flex-wrap" action="">
-          <div className=" w-[48%] mt-5">
+          <div className=" w-[48%] mt-5 max-lg:w-full">
             <label
               className={`text-lg ${
                 darkMode ? "text-gray-200" : "text-slate-800"
@@ -125,7 +125,7 @@ export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
               />
             </div>
           </div>
-          <div className="w-[48%] mt-5">
+          <div className="w-[48%] mt-5  max-lg:w-full ">
             <label
               className={`text-lg ${
                 darkMode ? "text-gray-200" : "text-slate-600"
@@ -170,7 +170,7 @@ export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
               />
             </div>
           </div>
-          <div className="w-[48%] mt-5">
+          <div className="w-[48%] mt-5 max-lg:w-full">
             <label
               className={`text-lg ${
                 darkMode ? "text-gray-200" : "text-slate-600"

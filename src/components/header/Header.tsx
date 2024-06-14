@@ -34,7 +34,7 @@ const Header = () => {
     ${isScrolled && darkTheme ? "bg-slate-950 text-white" : ""}
     `}
     >
-      <div className="container max-w-[1320px] flex  max-lg:px-8 mx-auto items-center py-4 gap-10 font-inter pr-6 max-lg:justify-between">
+      <div className="container max-w-[1320px] flex  max-lg:px-8 mx-auto items-center py-4 max-sm:gap-3 gap-10 font-inter pr-6 max-lg:justify-between">
         <MobileNav />
         <Logo />
         <HeaderNav />

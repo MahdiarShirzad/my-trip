@@ -32,7 +32,7 @@ const HeaderLeft: React.FC = () => {
   const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
   return (
-    <div className=" w-[50%] flex items-center gap-5 font-inter max-md:text-xs max-lg:w-full max-lg:justify-end ">
+    <div className=" w-[50%] flex items-center gap-5 max-sm:gap-2 font-inter max-md:text-xs max-lg:w-full max-lg:justify-end ">
       {isAuthenticated ? (
         <UserBtn />
       ) : (
@@ -163,13 +163,13 @@ const HeaderLeft: React.FC = () => {
           className=" font-interBold text-lg max-md:text-base cursor-pointer"
         >
           {darkMode ? (
-            <img className=" w-10" src={sun} alt="" />
+            <img className=" w-10 max-sm:w-7" src={sun} alt="" />
           ) : (
             <>
               {isScrolled ? (
-                <img className=" w-10" src={moon} alt="" />
+                <img className=" w-10 max-sm:w-7" src={moon} alt="" />
               ) : (
-                <img className=" w-10" src={moon_light} alt="" />
+                <img className=" w-10 max-sm:w-7" src={moon_light} alt="" />
               )}
             </>
           )}

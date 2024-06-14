@@ -177,13 +177,13 @@ export default function UserBtn({}: Props) {
     <div
       className={`${
         darkMode ? "bg-slate-700 text-gray-200" : "bg-zinc-100"
-      } relative px-5 w-4/5 max-lg:w-2/5 max-sm:w-2/3 max-md:text-sm  py-1 rounded-full `}
+      } relative px-5 w-4/5 max-lg:w-2/5 max-sm:w-full max-sm:px-1 max-md:text-sm  py-1 rounded-full `}
       ref={dropdownRef}
     >
       <button
         className={` py-2 px-2  ${
           darkMode ? "text-gray-200 " : ""
-        }  w-full h-full  capitalize flex items-center gap-2 font-interSemiBold text-lg cursor-pointer  text-black `}
+        }  w-full h-full max-md:text-sm capitalize flex items-center gap-2 font-interSemiBold text-lg cursor-pointer  text-black `}
         onClick={() => {
           setIsOpen(!isOpen);
         }}
@@ -240,7 +240,7 @@ export default function UserBtn({}: Props) {
       </button>
       {isOpen && (
         <div
-          className={`absolute mt-2 w-full px-3 left-0 font-inter shadow text-  ${
+          className={`absolute mt-2 max-sm:w-[130%] w-full px-3 left-0 font-inter shadow text-  ${
             darkMode ? "bg-slate-600 text-white" : "bg-white"
           } rounded-lg z-10`}
         >

@@ -25,7 +25,7 @@ export default function FlightBookingSummary({
 
   return (
     <div
-      className={`w-2/5 px-10 py-6 rounded-xl ${
+      className={`w-2/5 px-10 py-6 rounded-xl max-lg:w-full max-lg:mx-2 ${
         darkMode ? "bg-slate-600 text-gray-200" : "text-slate-600 bg-white"
       }`}
     >

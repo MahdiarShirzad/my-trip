@@ -39,7 +39,7 @@ export default function ForgetPass() {
           </div>
         </div>
       </div>
-      <div className=" max-w-[1320px] mx-auto my-20 max-lg:py-20">
+      <div className=" max-w-[1320px] mx-auto my-20 max-lg:py-40 max-lg:mt-0">
         <div
           className={`max-w-[610px] ${
             darkMode ? "bg-slate-800" : "bg-white"

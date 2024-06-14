@@ -32,7 +32,7 @@ export default function FlightBooking({}: Props) {
           </div>
         </div>
       </div>
-      <div className="flex items-start gap-8 my-20 max-w-[1320px] mx-auto">
+      <div className="flex items-start gap-8 my-20 max-lg:flex-wrap-reverse max-w-[1320px] mx-auto">
         <BookingPersonalInfoFlight selectedFlight={selectedFlight} />
         <FlightBookingSummary selectedFlight={selectedFlight} />
       </div>
