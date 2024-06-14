@@ -72,12 +72,7 @@ export async function logout() {
   }
 }
 
-// type UpdateUserParams = {
-//   updates: Partial<SignUp>;
-//   avatar: any;
-// };
-
-export async function updateUser(updates: Partial<SignUp>, avatar: File) {
+export async function updateUser(updates: any | null, avatar: any | null) {
   const { data, error } = await supabase.auth.updateUser({
     data: updates,
   });
