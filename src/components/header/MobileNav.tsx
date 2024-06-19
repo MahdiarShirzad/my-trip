@@ -53,7 +53,7 @@ const MobileNav = () => {
             {" "}
             <path
               d="M4 17H20M4 12H20M4 7H20"
-              stroke={darkTheme || !isScrolled ? "#fff" : "#000000"}
+              stroke={darkTheme ? "#fff" : "#000000"}
               stroke-width="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"

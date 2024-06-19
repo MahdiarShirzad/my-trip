@@ -64,7 +64,7 @@ export default function PanelAvatar({}: Props) {
   };
 
   return (
-    <div>
+    <div className="max-md:hidden">
       <div className="relative w-28 h-28 max-xl:w-16 max-xl:h-16 mx-auto mt-2">
         <div className="relative w-full">
           {isUploading ? (

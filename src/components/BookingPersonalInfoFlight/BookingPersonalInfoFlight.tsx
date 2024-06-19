@@ -37,6 +37,15 @@ export default function BookingPersonalInfoFlight({ selectedFlight }: any) {
   const onSubmit = async (values: any) => {
     const currentBookingsFlight = user?.user_metadata.bookingsFlight || [];
 
+    const flightExists = currentBookingsFlight.some(
+      (flight: any) => flight.id == flight.id
+    );
+
+    if (flightExists) {
+      toast.error("You have already booked this flight !");
+      return;
+    }
+
     const updatedBookingsFlight = [...currentBookingsFlight, selectedFlight];
 
     const updates: any = {

@@ -36,7 +36,7 @@ export default function UserProfile({}: Props) {
     <div
       className={`w-full ${
         darkMode ? "bg-slate-700 text-gray-200" : "bg-white"
-      } rounded-lg font-inter px-10 py-4`}
+      } rounded-lg font-inter px-10 py-4 max-md:text-sm`}
     >
       <p className=" text-2xl font-interSemiBold pb-3 border-b">Profile Info</p>
       <div className="flex  w-full justify-between items-center mt-5">

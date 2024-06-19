@@ -37,6 +37,15 @@ export default function BookingPersonalInfoHotel({ selectedHotel }: any) {
   const onSubmit = async (values: any) => {
     const currentBookingsHotels = user?.user_metadata.bookingsHotel || [];
 
+    const hotelExists = currentBookingsHotels.some(
+      (hotel: any) => hotel.id == selectedHotel.id
+    );
+
+    if (hotelExists) {
+      toast.error("You have already booked this hotel !");
+      return;
+    }
+
     const updatedBookingsHotels = [...currentBookingsHotels, selectedHotel];
 
     const updates: any = {
