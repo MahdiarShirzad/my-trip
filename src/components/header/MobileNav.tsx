@@ -2,26 +2,9 @@ import NavItems from "./NavItems";
 import styles from "./Header.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
-import { useEffect, useState } from "react";
 
 const MobileNav = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
   const darkTheme = useSelector((state: RootState) => state.theme.darkMode);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const scrollThreshold = 5;
-      setIsScrolled(scrollPosition > scrollThreshold);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <div
