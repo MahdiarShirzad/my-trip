@@ -15,10 +15,10 @@ import UserSettings from "../screens/UserPanel/UserSettings.tsx";
 import UserMessages from "../screens/UserPanel/UserMessages.tsx";
 import ForgetPass from "../screens/Auth/ForgetPass.tsx";
 import NotFound from "../screens/NotFound/NotFound.tsx";
+import ProtectedRoute from "./ProtectedRoute.tsx";
 
 const routes: RouteObject[] = [
   {
-    // id: "home",
     path: "/",
     element: <Home />,
   },
@@ -55,8 +55,12 @@ const routes: RouteObject[] = [
     element: <ForgetPass />,
   },
   {
-    path: "user-panel",
-    element: <UserPanel />,
+    path: "/user-panel",
+    element: (
+      <ProtectedRoute>
+        <UserPanel />
+      </ProtectedRoute>
+    ),
     children: [
       {
         element: <UserProfile />,
